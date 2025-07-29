@@ -84,7 +84,7 @@ const AnimatedSection = ({ children, delay = 0, variant = "default" }) => {
         scale: 1, 
         filter: "blur(0px)",
         transition: {
-          duration: 1.5,
+          duration: 0.5,
           delay: delay / 1000,
           ease: [0.25, 0.46, 0.45, 0.94]
         }
