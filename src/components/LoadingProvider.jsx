@@ -39,63 +39,8 @@ const PageLoader = ({ isLoading, onComplete }) => {
     return () => clearInterval(interval)
   }, [isLoading, onComplete])
 
-  // Blocca lo scroll quando il loader è attivo
-  useEffect(() => {
-    if (isLoading) {
-      const scrollY = window.pageYOffset
-      
-      document.body.style.position = 'fixed'
-      document.body.style.top = `-${scrollY}px`
-      document.body.style.left = '0'
-      document.body.style.right = '0'
-      document.body.style.width = '100%'
-      document.body.style.overflow = 'hidden'
-      document.documentElement.style.overflow = 'hidden'
-      
-      const preventDefault = (e) => {
-        e.preventDefault()
-        e.stopPropagation()
-        return false
-      }
-      
-      const preventKeys = (e) => {
-        const keys = { 37: 1, 38: 1, 39: 1, 40: 1, 32: 1, 33: 1, 34: 1, 35: 1, 36: 1 }
-        if (keys[e.keyCode]) {
-          preventDefault(e)
-          return false
-        }
-      }
-      
-      window.addEventListener('wheel', preventDefault, { passive: false })
-      window.addEventListener('touchmove', preventDefault, { passive: false })
-      window.addEventListener('scroll', preventDefault, { passive: false })
-      document.addEventListener('keydown', preventKeys, false)
-      
-      return () => {
-        const scrollY = document.body.style.top
-        
-        window.removeEventListener('wheel', preventDefault)
-        window.removeEventListener('touchmove', preventDefault)
-        window.removeEventListener('scroll', preventDefault)
-        document.removeEventListener('keydown', preventKeys)
-        
-        document.body.style.position = ''
-        document.body.style.top = ''
-        document.body.style.left = ''
-        document.body.style.right = ''
-        document.body.style.width = ''
-        document.body.style.overflow = ''
-        document.documentElement.style.overflow = ''
-        
-        if (scrollY) {
-          window.scrollTo({
-            top: parseInt(scrollY || '0', 10) * -1,
-            behavior: 'instant'
-          })
-        }
-      }
-    }
-  }, [isLoading])
+  // Blocca lo scroll quando il loader è attivo - RIMOSSO dal PageLoader
+  // Ora è gestito centralmente nel Provider
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -140,7 +85,7 @@ const PageLoader = ({ isLoading, onComplete }) => {
 
   return (
     <motion.div 
-      className="fixed inset-0 z-[99999] flex items-center justify-center bg-white"
+      className="fixed inset-0 z-[99999] flex items-center justify-center bg-white loader-container"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -150,22 +95,18 @@ const PageLoader = ({ isLoading, onComplete }) => {
       {/* Container atomico centrale */}
       <div className="relative">
         
-        {/* Lettera M centrale */}
+        {/* Logo centrale PNG */}
         <motion.div 
           className="relative z-20 flex items-center justify-center"
           variants={letterVariants}
           initial="hidden"
           animate="visible"
         >
-          <span 
-            className="text-6xl sm:text-7xl lg:text-8xl font-medium text-black select-none"
-            style={{ 
-              fontFamily: 'Belleza, sans-serif',
-              fontWeight: '500'
-            }}
-          >
-            M
-          </span>
+          <img 
+            src="/logo-loader.png" 
+            alt="Mengoni Design Logo"
+            className="w-12 h-16 sm:w-16 sm:h-20 lg:w-20 lg:h-24 object-contain"
+          />
         </motion.div>
 
         {/* Orbita 1 - Particelle piccole */}
@@ -389,6 +330,145 @@ export const LoadingProvider = ({ children }) => {
     document.body.classList.add('page-loading')
   }, [pathname, isInitialLoad])
 
+  // Blocco scroll centralizzato nel Provider
+  useEffect(() => {
+    if (isLoading) {
+      // Salva posizione scroll
+      const scrollY = window.pageYOffset
+      
+      // Aggiungi classe CSS anche a HTML
+      document.documentElement.classList.add('page-loading')
+      
+      // Blocca con position fixed più aggressivo
+      document.body.style.position = 'fixed'
+      document.body.style.top = `-${scrollY}px`
+      document.body.style.left = '0'
+      document.body.style.right = '0'
+      document.body.style.width = '100vw'
+      document.body.style.height = '100vh'
+      document.body.style.overflow = 'hidden'
+      document.documentElement.style.overflow = 'hidden'
+      document.documentElement.style.height = '100vh'
+      document.documentElement.style.position = 'fixed'
+      
+      // Magic Mouse / trackpad specifico
+      let lastScrollTime = 0
+      const preventDefault = (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        e.stopImmediatePropagation()
+        
+        // Forza scroll alla posizione salvata (per Magic Mouse)
+        const now = Date.now()
+        if (now - lastScrollTime > 10) { // Throttle
+          window.scrollTo(0, 0)
+          lastScrollTime = now
+        }
+        
+        return false
+      }
+      
+      const preventKeys = (e) => {
+        const keys = { 37: 1, 38: 1, 39: 1, 40: 1, 32: 1, 33: 1, 34: 1, 35: 1, 36: 1 }
+        if (keys[e.keyCode]) {
+          preventDefault(e)
+          return false
+        }
+      }
+      
+      // Eventi wheel specifici per Magic Mouse
+      const preventWheel = (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        e.stopImmediatePropagation()
+        
+        // Reset scroll position immediatamente
+        requestAnimationFrame(() => {
+          window.scrollTo(0, 0)
+          document.documentElement.scrollTop = 0
+          document.body.scrollTop = 0
+        })
+        
+        return false
+      }
+      
+      // Listener multipli con tutte le opzioni
+      const options = { passive: false, capture: true }
+      
+      // Standard events
+      window.addEventListener('wheel', preventWheel, options)
+      window.addEventListener('scroll', preventDefault, options)
+      document.addEventListener('wheel', preventWheel, options)
+      document.addEventListener('scroll', preventDefault, options)
+      
+      // Touch events
+      window.addEventListener('touchmove', preventDefault, options)
+      document.addEventListener('touchmove', preventDefault, options)
+      document.addEventListener('touchstart', preventDefault, options)
+      document.addEventListener('touchend', preventDefault, options)
+      
+      // Keyboard
+      document.addEventListener('keydown', preventKeys, { capture: true })
+      
+      // Magic Mouse specifici (WebKit)
+      document.addEventListener('mousewheel', preventWheel, options)
+      document.addEventListener('DOMMouseScroll', preventWheel, options)
+      
+      // Forza reset continuo per Magic Mouse
+      const resetInterval = setInterval(() => {
+        if (window.scrollY !== 0 || document.documentElement.scrollTop !== 0) {
+          window.scrollTo(0, 0)
+          document.documentElement.scrollTop = 0
+          document.body.scrollTop = 0
+        }
+      }, 16) // 60fps
+      
+      return () => {
+        clearInterval(resetInterval)
+        
+        const scrollY = document.body.style.top
+        
+        // Rimuovi classe da HTML
+        document.documentElement.classList.remove('page-loading')
+        
+        // Rimuovi tutti i listener
+        window.removeEventListener('wheel', preventWheel, options)
+        window.removeEventListener('scroll', preventDefault, options)
+        document.removeEventListener('wheel', preventWheel, options)
+        document.removeEventListener('scroll', preventDefault, options)
+        
+        window.removeEventListener('touchmove', preventDefault, options)
+        document.removeEventListener('touchmove', preventDefault, options)
+        document.removeEventListener('touchstart', preventDefault, options)
+        document.removeEventListener('touchend', preventDefault, options)
+        
+        document.removeEventListener('keydown', preventKeys, { capture: true })
+        document.removeEventListener('mousewheel', preventWheel, options)
+        document.removeEventListener('DOMMouseScroll', preventWheel, options)
+        
+        // Ripristina stili
+        document.body.style.position = ''
+        document.body.style.top = ''
+        document.body.style.left = ''
+        document.body.style.right = ''
+        document.body.style.width = ''
+        document.body.style.height = ''
+        document.body.style.overflow = ''
+        document.documentElement.style.overflow = ''
+        document.documentElement.style.height = ''
+        document.documentElement.style.position = ''
+        
+        // Ripristina scroll
+        if (scrollY) {
+          window.scrollTo({
+            top: parseInt(scrollY || '0', 10) * -1,
+            behavior: 'instant'
+          })
+        }
+      }
+    }
+  }, [isLoading])
+
   const setLoadingState = (loading) => {
     setIsLoading(loading)
     if (loading) {
@@ -425,8 +505,51 @@ export const LoadingProvider = ({ children }) => {
           visibility: hidden;
         }
 
+        /* Blocco scroll CSS aggressivo */
         body.page-loading {
-          overflow: hidden;
+          overflow: hidden !important;
+          position: fixed !important;
+          height: 100vh !important;
+          width: 100vw !important;
+          top: 0 !important;
+          left: 0 !important;
+          right: 0 !important;
+          bottom: 0 !important;
+        }
+
+        html.page-loading {
+          overflow: hidden !important;
+          height: 100vh !important;
+          width: 100vw !important;
+        }
+
+        /* Blocca tutti gli elementi scrollabili */
+        body.page-loading *:not(.loader-container):not(.loader-container *) {
+          overflow: hidden !important;
+          -webkit-overflow-scrolling: auto !important;
+          overflow-scrolling: auto !important;
+          -ms-overflow-style: none !important;
+          scrollbar-width: none !important;
+          pointer-events: none !important;
+        }
+
+        /* Permetti tutto nel loader */
+        body.page-loading .loader-container,
+        body.page-loading .loader-container * {
+          pointer-events: auto !important;
+          overflow: visible !important;
+        }
+
+        /* Blocca momentum scrolling iOS */
+        body.page-loading {
+          -webkit-overflow-scrolling: auto !important;
+          touch-action: none !important;
+          -webkit-touch-callout: none !important;
+          -webkit-user-select: none !important;
+          -khtml-user-select: none !important;
+          -moz-user-select: none !important;
+          -ms-user-select: none !important;
+          user-select: none !important;
         }
       `}</style>
     </LoadingContext.Provider>
