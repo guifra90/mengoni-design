@@ -29,6 +29,27 @@ export default function About() {
             <p className="text-lg text-gray-600 leading-relaxed mb-6">
               Mengoni Design è un Concept Store di piccole dimensioni, 
               uno spazio vivo, in continuo fluire...
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam, voluptates illo veniam placeat molestiae nulla quam voluptatum cumque. Id fugiat quasi esse ipsam nihil similique libero nemo eum voluptatum pariatur?<br />
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam, voluptates illo veniam placeat molestiae nulla quam voluptatum cumque. Id fugiat quasi esse ipsam nihil similique libero nemo eum voluptatum pariatur?<br />
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam, voluptates illo veniam placeat molestiae nulla quam voluptatum cumque. Id fugiat quasi esse ipsam nihil similique libero nemo eum voluptatum pariatur?<br />
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam, voluptates illo veniam placeat molestiae nulla quam voluptatum cumque. Id fugiat quasi esse ipsam nihil similique libero nemo eum voluptatum pariatur?<br />
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam, voluptates illo veniam placeat molestiae nulla quam voluptatum cumque. Id fugiat quasi esse ipsam nihil similique libero nemo eum voluptatum pariatur?<br />
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam, voluptates illo veniam placeat molestiae nulla quam voluptatum cumque. Id fugiat quasi esse ipsam nihil similique libero nemo eum voluptatum pariatur?<br />
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam, voluptates illo veniam placeat molestiae nulla quam voluptatum cumque. Id fugiat quasi esse ipsam nihil similique libero nemo eum voluptatum pariatur?<br />
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam, voluptates illo veniam placeat molestiae nulla quam voluptatum cumque. Id fugiat quasi esse ipsam nihil similique libero nemo eum voluptatum pariatur?<br />
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam, voluptates illo veniam placeat molestiae nulla quam voluptatum cumque. Id fugiat quasi esse ipsam nihil similique libero nemo eum voluptatum pariatur?<br />
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam, voluptates illo veniam placeat molestiae nulla quam voluptatum cumque. Id fugiat quasi esse ipsam nihil similique libero nemo eum voluptatum pariatur?<br />
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam, voluptates illo veniam placeat molestiae nulla quam voluptatum cumque. Id fugiat quasi esse ipsam nihil similique libero nemo eum voluptatum pariatur?<br />
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam, voluptates illo veniam placeat molestiae nulla quam voluptatum cumque. Id fugiat quasi esse ipsam nihil similique libero nemo eum voluptatum pariatur?<br />
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam, voluptates illo veniam placeat molestiae nulla quam voluptatum cumque. Id fugiat quasi esse ipsam nihil similique libero nemo eum voluptatum pariatur?<br />
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam, voluptates illo veniam placeat molestiae nulla quam voluptatum cumque. Id fugiat quasi esse ipsam nihil similique libero nemo eum voluptatum pariatur?<br />
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam, voluptates illo veniam placeat molestiae nulla quam voluptatum cumque. Id fugiat quasi esse ipsam nihil similique libero nemo eum voluptatum pariatur?<br />
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam, voluptates illo veniam placeat molestiae nulla quam voluptatum cumque. Id fugiat quasi esse ipsam nihil similique libero nemo eum voluptatum pariatur?<br />
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam, voluptates illo veniam placeat molestiae nulla quam voluptatum cumque. Id fugiat quasi esse ipsam nihil similique libero nemo eum voluptatum pariatur?<br />
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam, voluptates illo veniam placeat molestiae nulla quam voluptatum cumque. Id fugiat quasi esse ipsam nihil similique libero nemo eum voluptatum pariatur?<br />
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam, voluptates illo veniam placeat molestiae nulla quam voluptatum cumque. Id fugiat quasi esse ipsam nihil similique libero nemo eum voluptatum pariatur?<br />
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam, voluptates illo veniam placeat molestiae nulla quam voluptatum cumque. Id fugiat quasi esse ipsam nihil similique libero nemo eum voluptatum pariatur?<br />
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam, voluptates illo veniam placeat molestiae nulla quam voluptatum cumque. Id fugiat quasi esse ipsam nihil similique libero nemo eum voluptatum pariatur?<br />
             </p>
             {/* Resto del contenuto */}
           </div>

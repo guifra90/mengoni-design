@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono, Roboto, Belleza, Mrs_Saint_Delafield } from "next/font/google";
 import "./globals.css";
 import { LoadingProvider } from '@/components/LoadingProvider'
+import ScrollToTop from '@/components/ScrollToTop'
 
 
 const geistSans = Geist({
@@ -43,6 +44,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} ${belleza.variable} ${mrsSaintDelafield.variable} antialiased`}
       >
         <LoadingProvider>{children}</LoadingProvider>
+        <ScrollToTop />
       </body>
     </html>
   );

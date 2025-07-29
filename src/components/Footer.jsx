@@ -1,25 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-
 export default function Footer() {
-  const [showScrollTop, setShowScrollTop] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY
-      // Mostra il pulsante dopo aver scrollato almeno 300px
-      setShowScrollTop(scrollPosition > 300)
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
   return (
     <footer className="bg-black text-white">
       {/* Contenuto principale del footer */}
@@ -167,36 +148,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      
-      {/* Pulsante scroll to top - visibile solo dopo scroll */}
-      {showScrollTop && (
-        <button 
-          onClick={scrollToTop}
-          className="fixed bottom-6 sm:bottom-8 right-4 sm:right-8 w-10 h-10 bg-black hover:bg-gray-800 border border-gray-600 text-white rounded transition-all duration-300 flex items-center justify-center z-50 opacity-0 animate-fade-in"
-          style={{
-            animation: 'fadeIn 0.3s ease-in-out forwards'
-          }}
-          aria-label="Torna su"
-        >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-          </svg>
-        </button>
-      )}
-      
-      {/* CSS per animazione fade-in */}
-      <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
     </footer>
   )
 }
