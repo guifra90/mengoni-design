@@ -36,9 +36,9 @@ export default function Header({ isScrolled }) {
               <Image
                 src={isScrolled ? "/logo-small-black.png" : "/logo-full-white.png"}
                 alt="Mengoni Design"
-                width={isScrolled ? 120 : 200}
-                height={32}
-                className="h-6 sm:h-8 w-auto object-contain transition-all duration-300 cursor-pointer"
+                width={isScrolled ? 120 : 280}
+                height={isScrolled ? 32 : 56}
+                className="h-8 sm:h-10 lg:h-14 w-auto object-contain transition-all duration-300 cursor-pointer"
                 priority
               />
             </Link>
