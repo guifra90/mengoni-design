@@ -49,7 +49,7 @@ export default function Header({ isScrolled }) {
             {menuItems.map((item) => (
               <Link 
                 key={item.href}
-                href={item.href} 
+                href={item.href}
                 className={`transition-colors duration-300 cursor-pointer ${
                   isScrolled 
                     ? 'text-black hover:text-gray-700' 
@@ -104,7 +104,7 @@ export default function Header({ isScrolled }) {
             {menuItems.map((item) => (
               <Link 
                 key={item.href}
-                href={item.href} 
+                href={item.href}
                 className={`block px-2 py-2 transition-colors duration-300 cursor-pointer ${
                   isScrolled 
                     ? 'text-black hover:text-gray-700' 

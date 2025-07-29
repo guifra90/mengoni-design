@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import PageLoader from '@/components/PageLoader'
 
 // Import dei componenti
 import Header from '@/components/Header'
@@ -84,7 +83,7 @@ const AnimatedSection = ({ children, delay = 0, variant = "default" }) => {
         scale: 1, 
         filter: "blur(0px)",
         transition: {
-          duration: 0.5,
+          duration: 1.5,
           delay: delay / 1000,
           ease: [0.25, 0.46, 0.45, 0.94]
         }
@@ -107,7 +106,6 @@ const AnimatedSection = ({ children, delay = 0, variant = "default" }) => {
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -119,87 +117,57 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const handleLoadingComplete = () => {
-    console.log('Loading completed!') // Debug
-    setIsLoading(false)
-  }
-
-  // Debug: Forza nascondere il loader dopo 5 secondi come fallback
-  useEffect(() => {
-    const fallbackTimer = setTimeout(() => {
-      console.log('Fallback: hiding loader')
-      setIsLoading(false)
-    }, 5000)
-
-    return () => clearTimeout(fallbackTimer)
-  }, [])
-
-  console.log('isLoading:', isLoading) // Debug
-
   return (
-    <>
-      {/* Loader riutilizzabile */}
-      <PageLoader 
-        isLoading={isLoading}
-        onComplete={handleLoadingComplete}
-        duration={2500}
-      />
+    <motion.div 
+      className="min-h-screen bg-white overflow-x-hidden"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.3 }}
+    >
+      {/* Header */}
+      <Header isScrolled={isScrolled} />
 
-      <motion.div 
-        className="min-h-screen bg-white overflow-x-hidden"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isLoading ? 0 : 1 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-        style={{ 
-          visibility: isLoading ? 'hidden' : 'visible',
-          backgroundColor: 'white' // Forza sfondo bianco
+      {/* Hero Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 50, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ 
+          duration: 1.6, 
+          delay: 0.8,
+          ease: [0.16, 1, 0.3, 1]
         }}
       >
-        {/* Header */}
-        <Header isScrolled={isScrolled} />
-
-        {/* Hero Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 50, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ 
-            duration: 1.6, 
-            delay: 0.8,
-            ease: [0.16, 1, 0.3, 1]
-          }}
-        >
-          <HeroSection />
-        </motion.div>
-
-        {/* Sezioni animate */}
-        <AnimatedSection delay={200} variant="elegant">
-          <ShowroomSlider />
-        </AnimatedSection>
-
-        <AnimatedSection delay={100} variant="slideLeft">
-          <LaBoutiqueSection />
-        </AnimatedSection>
-
-        <AnimatedSection delay={300} variant="fade">
-          <ProgettiHeroSection />
-        </AnimatedSection>
-
-        <AnimatedSection delay={150} variant="elegant">
-          <ProcessoValoriSection />
-        </AnimatedSection>
-        
-        <AnimatedSection delay={200} variant="slideRight">
-          <BrandsGridSection />
-        </AnimatedSection>
-
-        <AnimatedSection delay={250} variant="elegant">
-          <ContattaciMappaSection />
-        </AnimatedSection>
-
-        <AnimatedSection delay={100} variant="fade">
-          <Footer />
-        </AnimatedSection>
+        <HeroSection />
       </motion.div>
+
+      {/* Sezioni animate */}
+      <AnimatedSection delay={200} variant="elegant">
+        <ShowroomSlider />
+      </AnimatedSection>
+
+      <AnimatedSection delay={100} variant="slideLeft">
+        <LaBoutiqueSection />
+      </AnimatedSection>
+
+      <AnimatedSection delay={300} variant="fade">
+        <ProgettiHeroSection />
+      </AnimatedSection>
+
+      <AnimatedSection delay={150} variant="elegant">
+        <ProcessoValoriSection />
+      </AnimatedSection>
+      
+      <AnimatedSection delay={200} variant="slideRight">
+        <BrandsGridSection />
+      </AnimatedSection>
+
+      <AnimatedSection delay={250} variant="elegant">
+        <ContattaciMappaSection />
+      </AnimatedSection>
+
+      <AnimatedSection delay={100} variant="fade">
+        <Footer />
+      </AnimatedSection>
 
       {/* CSS globali per performance */}
       <style jsx global>{`
@@ -216,6 +184,6 @@ export default function Home() {
           perspective: 1000px;
         }
       `}</style>
-    </>
+    </motion.div>
   )
 }

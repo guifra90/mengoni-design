@@ -1,14 +1,22 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { createContext, useContext, useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
 
-const PageLoader = ({ 
-  isLoading, 
-  onComplete, 
-  duration = 2500,
-  className = "" 
-}) => {
+// Context
+const LoadingContext = createContext()
+
+export const useLoading = () => {
+  const context = useContext(LoadingContext)
+  if (!context) {
+    throw new Error('useLoading must be used within LoadingProvider')
+  }
+  return context
+}
+
+// PageLoader integrato
+const PageLoader = ({ isLoading, onComplete }) => {
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
@@ -18,13 +26,11 @@ const PageLoader = ({
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(interval)
-          // Exit più smooth con blur
           setTimeout(() => {
             onComplete?.()
           }, 300)
           return 100
         }
-        // Caricamento più smooth e graduale
         const increment = Math.random() * 8 + 3
         return Math.min(prev + increment, 100)
       })
@@ -36,10 +42,8 @@ const PageLoader = ({
   // Blocca lo scroll quando il loader è attivo
   useEffect(() => {
     if (isLoading) {
-      // Salva la posizione di scroll attuale
       const scrollY = window.pageYOffset
       
-      // Applica gli stili per bloccare lo scroll mantenendo la posizione
       document.body.style.position = 'fixed'
       document.body.style.top = `-${scrollY}px`
       document.body.style.left = '0'
@@ -48,7 +52,6 @@ const PageLoader = ({
       document.body.style.overflow = 'hidden'
       document.documentElement.style.overflow = 'hidden'
       
-      // Previeni scroll anche con eventi
       const preventDefault = (e) => {
         e.preventDefault()
         e.stopPropagation()
@@ -63,23 +66,19 @@ const PageLoader = ({
         }
       }
       
-      // Aggiungi tutti i listener per bloccare lo scroll
       window.addEventListener('wheel', preventDefault, { passive: false })
       window.addEventListener('touchmove', preventDefault, { passive: false })
       window.addEventListener('scroll', preventDefault, { passive: false })
       document.addEventListener('keydown', preventKeys, false)
       
-      // Cleanup function che ripristina tutto
       return () => {
         const scrollY = document.body.style.top
         
-        // Rimuovi tutti i listener
         window.removeEventListener('wheel', preventDefault)
         window.removeEventListener('touchmove', preventDefault)
         window.removeEventListener('scroll', preventDefault)
         document.removeEventListener('keydown', preventKeys)
         
-        // Ripristina gli stili
         document.body.style.position = ''
         document.body.style.top = ''
         document.body.style.left = ''
@@ -88,7 +87,6 @@ const PageLoader = ({
         document.body.style.overflow = ''
         document.documentElement.style.overflow = ''
         
-        // Ripristina la posizione di scroll senza animazioni
         if (scrollY) {
           window.scrollTo({
             top: parseInt(scrollY || '0', 10) * -1,
@@ -142,15 +140,12 @@ const PageLoader = ({
 
   return (
     <motion.div 
-      className={`fixed inset-0 z-[99999] flex items-center justify-center bg-white ${className}`}
+      className="fixed inset-0 z-[99999] flex items-center justify-center bg-white"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
       exit="exit"
-      style={{
-        backdropFilter: 'blur(0px)',
-        WebkitBackdropFilter: 'blur(0px)'
-      }}
+      key="loader"
     >
       {/* Container atomico centrale */}
       <div className="relative">
@@ -183,7 +178,6 @@ const PageLoader = ({
             repeat: Infinity
           }}
         >
-          {/* Particella 1 */}
           <motion.div 
             className="absolute top-0 left-1/2 w-2 h-2 bg-black rounded-full transform -translate-x-1/2 -translate-y-1"
             animate={{
@@ -196,7 +190,6 @@ const PageLoader = ({
               repeat: Infinity
             }}
           />
-          {/* Particella 2 */}
           <motion.div 
             className="absolute bottom-0 left-1/2 w-1.5 h-1.5 bg-gray-600 rounded-full transform -translate-x-1/2 translate-y-1"
             animate={{
@@ -210,7 +203,6 @@ const PageLoader = ({
               delay: 1.25
             }}
           />
-          {/* Particella 3 */}
           <motion.div 
             className="absolute right-0 top-1/2 w-1 h-1 bg-gray-400 rounded-full transform translate-x-1 -translate-y-1/2"
             animate={{
@@ -224,7 +216,6 @@ const PageLoader = ({
               delay: 0.625
             }}
           />
-          {/* Particella 4 */}
           <motion.div 
             className="absolute left-0 top-1/2 w-1.5 h-1.5 bg-black rounded-full transform -translate-x-1 -translate-y-1/2"
             animate={{
@@ -250,7 +241,6 @@ const PageLoader = ({
             repeat: Infinity
           }}
         >
-          {/* Quadrato 1 */}
           <motion.div 
             className="absolute top-0 left-1/2 w-3 h-3 bg-black transform -translate-x-1/2 -translate-y-1.5 rotate-45"
             animate={{
@@ -264,7 +254,6 @@ const PageLoader = ({
               repeat: Infinity
             }}
           />
-          {/* Quadrato 2 */}
           <motion.div 
             className="absolute bottom-0 left-1/2 w-2 h-2 bg-gray-700 transform -translate-x-1/2 translate-y-1 rotate-45"
             animate={{
@@ -279,7 +268,6 @@ const PageLoader = ({
               delay: 1.75
             }}
           />
-          {/* Quadrato 3 */}
           <motion.div 
             className="absolute right-0 top-1/2 w-2.5 h-2.5 bg-gray-500 transform translate-x-1.5 -translate-y-1/2 rotate-45"
             animate={{
@@ -306,7 +294,6 @@ const PageLoader = ({
             repeat: Infinity
           }}
         >
-          {/* Particella esterna 1 */}
           <motion.div 
             className="absolute top-0 left-1/2 w-1 h-1 bg-gray-300 rounded-full transform -translate-x-1/2 -translate-y-0.5"
             animate={{
@@ -319,7 +306,6 @@ const PageLoader = ({
               repeat: Infinity
             }}
           />
-          {/* Particella esterna 2 */}
           <motion.div 
             className="absolute bottom-0 left-1/2 w-1.5 h-1.5 bg-gray-400 rounded-full transform -translate-x-1/2 translate-y-0.5"
             animate={{
@@ -333,7 +319,6 @@ const PageLoader = ({
               delay: 2.25
             }}
           />
-          {/* Quadrato esterno */}
           <motion.div 
             className="absolute right-0 top-1/2 w-2 h-2 bg-gray-600 transform translate-x-1 -translate-y-1/2 rotate-45"
             animate={{
@@ -347,7 +332,6 @@ const PageLoader = ({
               delay: 1.125
             }}
           />
-          {/* Quadrato esterno 2 */}
           <motion.div 
             className="absolute left-0 top-1/2 w-1.5 h-1.5 bg-black transform -translate-x-1 -translate-y-1/2 rotate-45"
             animate={{
@@ -385,4 +369,66 @@ const PageLoader = ({
   )
 }
 
-export default PageLoader
+// Provider principale
+export const LoadingProvider = ({ children }) => {
+  const [isLoading, setIsLoading] = useState(false)
+  const [isInitialLoad, setIsInitialLoad] = useState(true)
+  const pathname = usePathname()
+
+  useEffect(() => {
+    if (isInitialLoad) {
+      setIsInitialLoad(false)
+      if (pathname === '/') {
+        setIsLoading(true)
+        document.body.classList.add('page-loading')
+      }
+      return
+    }
+
+    setIsLoading(true)
+    document.body.classList.add('page-loading')
+  }, [pathname, isInitialLoad])
+
+  const setLoadingState = (loading) => {
+    setIsLoading(loading)
+    if (loading) {
+      document.body.classList.add('page-loading')
+    } else {
+      document.body.classList.remove('page-loading')
+    }
+  }
+
+  const value = {
+    isLoading,
+    setLoading: setLoadingState
+  }
+
+  return (
+    <LoadingContext.Provider value={value}>
+      <PageLoader 
+        isLoading={isLoading}
+        onComplete={() => setLoadingState(false)}
+      />
+      <div className="page-content">
+        {children}
+      </div>
+
+      <style jsx global>{`
+        .page-content {
+          opacity: 1;
+          visibility: visible;
+          transition: opacity 0.3s ease-out;
+        }
+
+        body.page-loading .page-content {
+          opacity: 0;
+          visibility: hidden;
+        }
+
+        body.page-loading {
+          overflow: hidden;
+        }
+      `}</style>
+    </LoadingContext.Provider>
+  )
+}

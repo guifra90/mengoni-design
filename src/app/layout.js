@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono, Roboto, Belleza, Mrs_Saint_Delafield } from "next/font/google";
 import "./globals.css";
-import NavigationLoader from '@/components/NavigationLoader'
+import { LoadingProvider } from '@/components/LoadingProvider'
 
 
 const geistSans = Geist({
@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} ${belleza.variable} ${mrsSaintDelafield.variable} antialiased`}
       >
-        <NavigationLoader>{children}</NavigationLoader>
+        <LoadingProvider>{children}</LoadingProvider>
       </body>
     </html>
   );
