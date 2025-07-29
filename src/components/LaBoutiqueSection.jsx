@@ -2,18 +2,18 @@ import Image from 'next/image'
 
 export default function LaBoutiqueSection() {
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+    <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
           {/* Contenuto testuale */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {/* Testo corsivo in alto */}
             <p 
               className="tracking-wide"
               style={{
                 fontFamily: 'Mrs Saint Delafield, cursive',
                 color: '#d7cbb7',
-                fontSize: '50px'
+                fontSize: 'clamp(32px, 6vw, 50px)'
               }}
             >
               La Boutique
@@ -27,7 +27,7 @@ export default function LaBoutiqueSection() {
                 fontWeight: '500',
                 textTransform: 'uppercase',
                 color: '#000',
-                fontSize: '46px',
+                fontSize: 'clamp(24px, 5vw, 46px)',
                 lineHeight: '1em'
               }}
             >
@@ -39,7 +39,7 @@ export default function LaBoutiqueSection() {
               className="max-w-lg"
               style={{
                 fontFamily: 'Roboto, sans-serif',
-                fontSize: '16px',
+                fontSize: 'clamp(14px, 2.5vw, 16px)',
                 lineHeight: '1.62em',
                 fontWeight: '300',
                 color: '#595959',
@@ -54,15 +54,15 @@ export default function LaBoutiqueSection() {
             </p>
             
             {/* Pulsante */}
-            <div className="pt-4">
+            <div className="pt-2 sm:pt-4">
               <button 
-                className="cursor-pointer"
+                className="cursor-pointer w-full sm:w-auto"
                 style={{
                   color: '#b59175',
                   backgroundColor: 'transparent',
                   border: '1px solid #b59175',
                   fontFamily: 'Roboto, sans-serif',
-                  fontSize: '13px',
+                  fontSize: 'clamp(11px, 2vw, 13px)',
                   lineHeight: '30px',
                   fontWeight: '400',
                   textDecoration: 'none',
@@ -70,7 +70,7 @@ export default function LaBoutiqueSection() {
                   borderRadius: '0',
                   outline: '0',
                   transition: 'color .2s ease-out, background-color .2s ease-out, border-color .2s ease-out',
-                  padding: '10px 57px'
+                  padding: '10px 40px'
                 }}
                 onMouseEnter={(e) => {
                   e.target.style.color = '#fff';
@@ -89,8 +89,8 @@ export default function LaBoutiqueSection() {
           </div>
           
           {/* Immagine */}
-          <div className="relative">
-            <div className="relative overflow-hidden" style={{ height: '900px', width: '600px', maxWidth: '100%' }}>
+          <div className="relative order-first lg:order-last hidden sm:block">
+            <div className="relative overflow-hidden w-full aspect-[600/900] max-w-lg mx-auto lg:max-w-none">
               <Image
                 src="/chi-siamo.jpg"
                 alt="Designer al lavoro con cataloghi e materiali"

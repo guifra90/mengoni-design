@@ -27,7 +27,7 @@ export default function HeroSection() {
     }, 5000)
     
     return () => clearInterval(timer)
-  }, [currentSlide]) // Dipendenza aggiunta per resettare il timer
+  }, [currentSlide])
 
   const nextSlide = () => {
     setCurrentSlide((prev) => {
@@ -61,15 +61,15 @@ export default function HeroSection() {
             priority={index === 0}
           />
           <div className="absolute inset-0 z-20 flex items-center justify-center">
-            <div className="text-center text-white max-w-none px-6">
+            <div className="text-center text-white max-w-none px-4 sm:px-6">
               <h1 
-                className="tracking-wide whitespace-nowrap"
+                className="tracking-wide"
                 style={{
                   fontFamily: 'Belleza, serif',
                   textTransform: 'uppercase',
                   color: 'rgb(255, 255, 255)',
                   fontWeight: '400',
-                  fontSize: '100px',
+                  fontSize: 'clamp(28px, 8vw, 100px)',
                   lineHeight: '1.1'
                 }}
               >
@@ -84,11 +84,11 @@ export default function HeroSection() {
       {/* Freccia sinistra */}
       <button
         onClick={prevSlide}
-        className="absolute left-12 md:left-24 top-1/2 transform -translate-y-1/2 z-30 w-12 h-8 flex items-center justify-center text-white hover:text-gray-300 transition-colors duration-300 cursor-pointer"
+        className="absolute left-4 sm:left-8 md:left-12 lg:left-24 top-1/2 transform -translate-y-1/2 z-30 w-10 sm:w-12 h-8 flex items-center justify-center text-white hover:text-gray-300 transition-colors duration-300 cursor-pointer"
         aria-label="Slide precedente"
       >
         <svg 
-          className="w-10 h-3 pointer-events-none" 
+          className="w-8 sm:w-10 h-3 pointer-events-none" 
           xmlns="http://www.w3.org/2000/svg" 
           x="0px" 
           y="0px" 
@@ -103,11 +103,11 @@ export default function HeroSection() {
       {/* Freccia destra */}
       <button
         onClick={nextSlide}
-        className="absolute right-12 md:right-24 top-1/2 transform -translate-y-1/2 z-30 w-12 h-8 flex items-center justify-center text-white hover:text-gray-300 transition-colors duration-300 cursor-pointer"
+        className="absolute right-4 sm:right-8 md:right-12 lg:right-24 top-1/2 transform -translate-y-1/2 z-30 w-10 sm:w-12 h-8 flex items-center justify-center text-white hover:text-gray-300 transition-colors duration-300 cursor-pointer"
         aria-label="Slide successivo"
       >
         <svg 
-          className="w-10 h-3 transform rotate-180 pointer-events-none" 
+          className="w-8 sm:w-10 h-3 transform rotate-180 pointer-events-none" 
           xmlns="http://www.w3.org/2000/svg" 
           x="0px" 
           y="0px" 
@@ -118,6 +118,8 @@ export default function HeroSection() {
           <polygon points="38,5.37 1.5,5.37 8.21,0.54 7.87,0 0,5.68 7.61,12 7.98,11.49 1.4,6.02 38,6.02" />
         </svg>
       </button>
+
+
     </section>
   )
 }

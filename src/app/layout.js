@@ -1,5 +1,7 @@
 import { Geist, Geist_Mono, Roboto, Belleza, Mrs_Saint_Delafield } from "next/font/google";
 import "./globals.css";
+import NavigationLoader from '@/components/NavigationLoader'
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,7 +42,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} ${belleza.variable} ${mrsSaintDelafield.variable} antialiased`}
       >
-        {children}
+        <NavigationLoader>{children}</NavigationLoader>
       </body>
     </html>
   );

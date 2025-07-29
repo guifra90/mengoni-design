@@ -90,13 +90,13 @@ export default function ProcessoValoriSection() {
 
   const ProgressBar = ({ label, value, barWidth }) => (
     <div className="progress-item group">
-      <div className="flex justify-between items-baseline mb-4">
+      <div className="flex justify-between items-baseline mb-3 sm:mb-4">
         <h3 
           className="tracking-[0.2em] text-gray-800 transition-colors duration-300 group-hover:text-gray-900"
           style={{
             fontFamily: 'Belleza, sans-serif',
             fontWeight: '400',
-            fontSize: '13px',
+            fontSize: 'clamp(11px, 2vw, 13px)',
             textTransform: 'uppercase',
             letterSpacing: '0.2em'
           }}
@@ -108,7 +108,7 @@ export default function ProcessoValoriSection() {
           style={{
             fontFamily: 'Belleza, sans-serif',
             fontWeight: '400',
-            fontSize: '13px'
+            fontSize: 'clamp(11px, 2vw, 13px)'
           }}
         >
           {value}%
@@ -137,18 +137,18 @@ export default function ProcessoValoriSection() {
   )
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
-      <div className="container mx-auto px-6">
+    <section ref={sectionRef} className="py-12 sm:py-16 lg:py-24 bg-white">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="mb-20">
+          <div className="mb-12 sm:mb-16 lg:mb-20">
             {/* Sottotitolo "Processo" */}
             <p 
-              className="mb-3"
+              className="mb-2 sm:mb-3"
               style={{
                 fontFamily: 'Mrs Saint Delafield, cursive',
                 color: '#d7cbb7',
-                fontSize: '50px'
+                fontSize: 'clamp(32px, 6vw, 50px)'
               }}
             >
               Processo
@@ -161,7 +161,7 @@ export default function ProcessoValoriSection() {
                 fontWeight: '500',
                 textTransform: 'uppercase',
                 color: '#000',
-                fontSize: '46px',
+                fontSize: 'clamp(24px, 5vw, 46px)',
                 lineHeight: '1em'
               }}
             >
@@ -171,9 +171,9 @@ export default function ProcessoValoriSection() {
           </div>
           
           {/* Grid delle barre di progresso */}
-          <div className="grid lg:grid-cols-2 gap-x-32 gap-y-16">
+          <div className="grid lg:grid-cols-2 gap-x-16 lg:gap-x-32 gap-y-8 sm:gap-y-12 lg:gap-y-16">
             {/* Colonna sinistra */}
-            <div className="space-y-16">
+            <div className="space-y-8 sm:space-y-12 lg:space-y-16">
               <ProgressBar 
                 label="BRAND" 
                 value={animatedValues.brand} 
@@ -192,7 +192,7 @@ export default function ProcessoValoriSection() {
             </div>
             
             {/* Colonna destra */}
-            <div className="space-y-16">
+            <div className="space-y-8 sm:space-y-12 lg:space-y-16">
               <ProgressBar 
                 label="FIDUCIA" 
                 value={animatedValues.fiducia} 

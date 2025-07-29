@@ -4,12 +4,28 @@ import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Autoplay } from 'swiper/modules'
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/navigation'
 
 export default function ShowroomSlider() {
+  const [windowWidth, setWindowWidth] = useState(0)
+
+  useEffect(() => {
+    // Set initial width
+    setWindowWidth(window.innerWidth)
+    
+    // Handle resize
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   const showroomSlides = [
     {
       image: '/slider-showroom/slide1.jpg',
@@ -44,16 +60,16 @@ export default function ShowroomSlider() {
   ]
 
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between mb-12">
-          <div>
+    <section className="py-12 sm:py-16 lg:py-20 bg-white">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 sm:mb-12">
+          <div className="mb-6 sm:mb-0">
             <p 
               className="mb-2 tracking-widest uppercase"
               style={{
                 fontFamily: 'Mrs Saint Delafield, cursive',
                 color: '#d7cbb7',
-                fontSize: '50px',
+                fontSize: 'clamp(32px, 6vw, 50px)',
                 textTransform: 'none'
               }}
             >
@@ -65,7 +81,7 @@ export default function ShowroomSlider() {
                 fontWeight: '500',
                 textTransform: 'uppercase',
                 color: '#000',
-                fontSize: '46px',
+                fontSize: 'clamp(24px, 5vw, 46px)',
                 lineHeight: '1em'
               }}
             >
@@ -116,57 +132,46 @@ export default function ShowroomSlider() {
       {/* Swiper Slider */}
       <div className="relative">
         <div className="container mx-auto">
-          <div className="pl-6 -mr-6 lg:-mr-[calc((100vw-1280px)/2)] overflow-hidden">
+          <div className="pl-0 md:pl-6 -mr-0 md:-mr-6 lg:-mr-[calc((100vw-1280px)/2)] overflow-hidden">
             <Swiper
+              key={windowWidth} // Force re-render on resize
               modules={[Navigation, Autoplay]}
-              spaceBetween={24}
-              slidesPerView="auto"
+              spaceBetween={windowWidth >= 768 ? 24 : 0}
+              slidesPerView={windowWidth >= 768 ? 'auto' : 1}
               loop={true}
               speed={600}
               grabCursor={true}
               navigation={{
-                prevEl: '.swiper-button-prev-custom',
-                nextEl: '.swiper-button-next-custom',
+                prevEl: '.swiper-button-prev-custom, .swiper-button-prev-mobile',
+                nextEl: '.swiper-button-next-custom, .swiper-button-next-mobile',
               }}
               autoplay={{
                 delay: 5000,
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true,
               }}
-              breakpoints={{
-                320: {
-                  slidesPerView: 1,
-                  spaceBetween: 16,
-                },
-                768: {
-                  slidesPerView: 'auto',
-                  spaceBetween: 24,
-                },
-              }}
               className="!overflow-visible"
             >
               {showroomSlides.map((slide, index) => (
                 <SwiperSlide 
                   key={index} 
-                  style={{ width: '580px' }}
-                  className="!h-auto"
+                  className="!h-auto !w-full md:!w-[580px]"
                 >
                   <div className="group cursor-pointer relative">
                     <motion.div 
                       whileHover={{ scale: 1.01 }}
                       transition={{ duration: 0.4, ease: "easeOut" }}
-                      className="relative overflow-hidden" 
-                      style={{ height: '800px', width: '580px' }}
+                      className="relative overflow-hidden w-full aspect-[580/800]" 
                     >
                       <Image
                         src={slide.image}
                         alt={slide.title}
                         fill
-                        className="object-cover"
-                        sizes="580px"
+                        className="object-cover object-center"
+                        sizes="(max-width: 768px) 100vw, 580px"
                         draggable={false}
                       />
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-start p-8">
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-start p-4 sm:p-8">
                         <h3
                           className="transform translate-y-5 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100"
                           style={{
@@ -174,7 +179,7 @@ export default function ShowroomSlider() {
                             fontWeight: '500',
                             textTransform: 'uppercase',
                             color: 'white',
-                            fontSize: '25px',
+                            fontSize: 'clamp(18px, 4vw, 25px)',
                             lineHeight: '1.12em',
                             margin: '0',
                             wordWrap: 'break-word',
@@ -193,9 +198,9 @@ export default function ShowroomSlider() {
         </div>
       </div>
 
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6">
         {/* Mobile Navigation */}
-        <div className="flex md:hidden justify-center mt-8 space-x-8">
+        <div className="flex md:hidden justify-center mt-6 sm:mt-8 space-x-8">
           <motion.button
             className="swiper-button-prev-mobile w-12 h-8 flex items-center justify-center text-gray-400 hover:text-gray-900 transition-colors duration-300 cursor-pointer"
             whileHover={{ scale: 1.05 }}

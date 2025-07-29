@@ -26,24 +26,24 @@ export default function BrandsGridSection() {
   ]
 
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="container mx-auto px-6">
+    <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-8xl mx-auto">
           {/* Grid dei brand */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-20 gap-y-20">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-8 sm:gap-x-12 md:gap-x-16 lg:gap-x-20 gap-y-8 sm:gap-y-12 md:gap-y-16 lg:gap-y-20">
             {brands.map((brand, index) => (
               <div
                 key={index}
-                className="flex items-center justify-center h-24 group cursor-pointer"
+                className="flex items-center justify-center h-12 sm:h-16 md:h-20 group cursor-pointer"
               >
                 <div className="flex items-center justify-center w-full h-full">
                   <Image
                     src={brand.logo}
                     alt={brand.name}
-                    width={180}
-                    height={80}
+                    width={140}
+                    height={60}
                     className="max-w-full max-h-full object-contain opacity-60 group-hover:opacity-80 transition-opacity duration-300 grayscale hover:grayscale-0"
-                    sizes="180px"
+                    sizes="(max-width: 640px) 100px, (max-width: 768px) 120px, 140px"
                   />
                 </div>
               </div>
