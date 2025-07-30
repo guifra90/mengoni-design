@@ -6,10 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "prebuild": "npm ci"      
+    "lint": "next lint"    
   },
   "dependencies": {
+    "autoprefixer": "^10.4.21",
     "framer-motion": "^12.23.11",
     "next": "15.4.4",
     "react": "19.1.0",
@@ -17,7 +17,6 @@
     "swiper": "^11.2.10"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
     "tailwindcss": "^4"
   }
 }
