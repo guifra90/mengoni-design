@@ -17,11 +17,4 @@ module.exports = {
     },
   },
   plugins: [],
-  // Disabilita Lightning CSS per evitare errori su Netlify
-  corePlugins: {
-    preflight: true,
-  },
-  experimental: {
-    optimizeUniversalDefaults: false,
-  }
 }
