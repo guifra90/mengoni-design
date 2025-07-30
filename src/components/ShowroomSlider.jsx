@@ -12,14 +12,17 @@ import 'swiper/css/navigation'
 
 export default function ShowroomSlider() {
   const [windowWidth, setWindowWidth] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     // Set initial width
     setWindowWidth(window.innerWidth)
+    setIsMobile(window.innerWidth < 768)
     
     // Handle resize
     const handleResize = () => {
       setWindowWidth(window.innerWidth)
+      setIsMobile(window.innerWidth < 768)
     }
 
     window.addEventListener('resize', handleResize)
@@ -159,7 +162,7 @@ export default function ShowroomSlider() {
                 >
                   <div className="group cursor-pointer relative">
                     <motion.div 
-                      whileHover={{ scale: 1.01 }}
+                      whileHover={{ scale: isMobile ? 1 : 1.01 }}
                       transition={{ duration: 0.4, ease: "easeOut" }}
                       className="relative overflow-hidden w-full aspect-[580/800]" 
                     >
@@ -171,9 +174,18 @@ export default function ShowroomSlider() {
                         sizes="(max-width: 768px) 100vw, 580px"
                         draggable={false}
                       />
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-start p-4 sm:p-8">
+                      {/* Overlay con label - sempre visibile su mobile, hover su desktop */}
+                      <div className={`absolute inset-0 bg-black/40 flex items-end justify-start p-4 sm:p-8 transition-opacity duration-300 ${
+                        isMobile 
+                          ? 'opacity-100' 
+                          : 'opacity-0 group-hover:opacity-100'
+                      }`}>
                         <h3
-                          className="transform translate-y-5 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100"
+                          className={`transition-all duration-300 ${
+                            isMobile 
+                              ? 'translate-y-0 opacity-100' 
+                              : 'transform translate-y-5 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 delay-100'
+                          }`}
                           style={{
                             fontFamily: 'Belleza, sans-serif',
                             fontWeight: '500',
