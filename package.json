@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prebuild": "npm ci",        
+    "prebuild": "npm ci"      
   },
   "dependencies": {
     "framer-motion": "^12.23.11",
