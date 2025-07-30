@@ -61,7 +61,7 @@ export default function ShowroomGrid() {
 
   return (
     <section className="py-2 sm:py-16 lg:py-20 bg-white">
-      <div className="container mx-auto px-2 sm:px-6">
+      <div className="container mx-auto px-2 sm:px-2">
         {/* Header Section */}
         <div className="flex flex-col items-center text-center mb-6 sm:mb-12">
           <p
