@@ -60,10 +60,10 @@ export default function ShowroomGrid() {
   ]
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-white">
-      <div className="container mx-auto px-4 sm:px-6">
+    <section className="py-2 sm:py-16 lg:py-20 bg-white">
+      <div className="container mx-auto px-2 sm:px-6">
         {/* Header Section */}
-        <div className="flex flex-col items-center text-center mb-8 sm:mb-12">
+        <div className="flex flex-col items-center text-center mb-6 sm:mb-12">
           <p
             className="mb-2 tracking-widest"
             style={{
@@ -90,7 +90,7 @@ export default function ShowroomGrid() {
         </div>
 
         {/* Grid Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-6">
           {gridItems.map((item, index) => (
             <div key={index} className="group relative">
               <Link href={item.href} className="block cursor-pointer">
@@ -104,35 +104,52 @@ export default function ShowroomGrid() {
                     draggable={false}
                   />
 
-                  {/* Overlay con label - sempre visibile su mobile, hover su desktop */}
-                  <div className={`absolute inset-0 bg-black/40 flex items-end justify-start p-4 sm:p-6 transition-opacity duration-300 ${
-                    isMobile 
-                      ? 'opacity-100' 
-                      : 'opacity-0 group-hover:opacity-100'
-                  }`}>
-                    <div className="text-white">
-                      <h3
-                        className={`transition-all duration-300 ${
-                          isMobile 
-                            ? 'translate-y-0 opacity-100' 
-                            : 'transform translate-y-5 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 delay-100'
-                        }`}
-                        style={{
-                          fontFamily: 'Belleza, sans-serif',
-                          fontWeight: '500',
-                          textTransform: 'uppercase',
-                          color: 'white',
-                          fontSize: 'clamp(16px, 3vw, 22px)',
-                          lineHeight: '1.12em',
-                          margin: '0',
-                          wordWrap: 'break-word',
-                          textAlign: 'left'
-                        }}
-                      >
-                        {item.title}
-                      </h3>
+                  {/* Overlay con label - comportamento diverso per mobile e desktop */}
+                  {isMobile ? (
+                    // Mobile: sfumatura elegante e sottile
+                    <div className="absolute bottom-0 left-0 right-0">
+                      <div className="bg-gradient-to-t from-black/70 via-black/30 to-transparent pt-16 pb-6 px-6">
+                        <h3
+                          style={{
+                            fontFamily: 'Belleza, sans-serif',
+                            fontWeight: '500',
+                            textTransform: 'uppercase',
+                            color: 'white',
+                            fontSize: 'clamp(16px, 3vw, 22px)',
+                            lineHeight: '1.12em',
+                            margin: '0',
+                            wordWrap: 'break-word',
+                            textAlign: 'left',
+                            textShadow: '0 2px 8px rgba(0,0,0,0.5)'
+                          }}
+                        >
+                          {item.title}
+                        </h3>
+                      </div>
                     </div>
-                  </div>
+                  ) : (
+                    // Desktop: overlay completo su hover
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-start p-4 sm:p-6">
+                      <div className="text-white">
+                        <h3
+                          className="transform translate-y-5 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100"
+                          style={{
+                            fontFamily: 'Belleza, sans-serif',
+                            fontWeight: '500',
+                            textTransform: 'uppercase',
+                            color: 'white',
+                            fontSize: 'clamp(16px, 3vw, 22px)',
+                            lineHeight: '1.12em',
+                            margin: '0',
+                            wordWrap: 'break-word',
+                            textAlign: 'left'
+                          }}
+                        >
+                          {item.title}
+                        </h3>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </Link>
             </div>

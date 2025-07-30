@@ -174,33 +174,50 @@ export default function ShowroomSlider() {
                         sizes="(max-width: 768px) 100vw, 580px"
                         draggable={false}
                       />
-                      {/* Overlay con label - sempre visibile su mobile, hover su desktop */}
-                      <div className={`absolute inset-0 bg-black/40 flex items-end justify-start p-4 sm:p-8 transition-opacity duration-300 ${
-                        isMobile 
-                          ? 'opacity-100' 
-                          : 'opacity-0 group-hover:opacity-100'
-                      }`}>
-                        <h3
-                          className={`transition-all duration-300 ${
-                            isMobile 
-                              ? 'translate-y-0 opacity-100' 
-                              : 'transform translate-y-5 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 delay-100'
-                          }`}
-                          style={{
-                            fontFamily: 'Belleza, sans-serif',
-                            fontWeight: '500',
-                            textTransform: 'uppercase',
-                            color: 'white',
-                            fontSize: 'clamp(18px, 4vw, 25px)',
-                            lineHeight: '1.12em',
-                            margin: '0',
-                            wordWrap: 'break-word',
-                            textAlign: 'left'
-                          }}
-                        >
-                          {slide.title}
-                        </h3>
-                      </div>
+                      {/* Overlay con label - comportamento diverso per mobile e desktop */}
+                      {isMobile ? (
+                        // Mobile: sfumatura elegante e sottile
+                        <div className="absolute bottom-0 left-0 right-0">
+                          <div className="bg-gradient-to-t from-black/70 via-black/30 to-transparent pt-16 pb-6 px-6">
+                            <h3
+                              style={{
+                                fontFamily: 'Belleza, sans-serif',
+                                fontWeight: '500',
+                                textTransform: 'uppercase',
+                                color: 'white',
+                                fontSize: 'clamp(18px, 4vw, 25px)',
+                                lineHeight: '1.12em',
+                                margin: '0',
+                                wordWrap: 'break-word',
+                                textAlign: 'left',
+                                textShadow: '0 2px 8px rgba(0,0,0,0.5)'
+                              }}
+                            >
+                              {slide.title}
+                            </h3>
+                          </div>
+                        </div>
+                      ) : (
+                        // Desktop: overlay completo su hover
+                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-start p-4 sm:p-8">
+                          <h3
+                            className="transform translate-y-5 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100"
+                            style={{
+                              fontFamily: 'Belleza, sans-serif',
+                              fontWeight: '500',
+                              textTransform: 'uppercase',
+                              color: 'white',
+                              fontSize: 'clamp(18px, 4vw, 25px)',
+                              lineHeight: '1.12em',
+                              margin: '0',
+                              wordWrap: 'break-word',
+                              textAlign: 'left'
+                            }}
+                          >
+                            {slide.title}
+                          </h3>
+                        </div>
+                      )}
                     </motion.div>
                   </div>
                 </SwiperSlide>
