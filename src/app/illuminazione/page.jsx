@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import Image from 'next/image'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -114,8 +115,9 @@ export default function Illuminazione() {
                                             animationDelay: '400ms'
                                         }}
                                     >
-                                        <button
-                                            className="cursor-pointer w-full sm:w-auto"
+                                        <Link
+                                            href="/chi-siamo#contattaci"
+                                            className="inline-block cursor-pointer w-full sm:w-auto text-center"
                                             style={{
                                                 color: '#b59175',
                                                 backgroundColor: 'transparent',
@@ -143,8 +145,7 @@ export default function Illuminazione() {
                                             }}
                                         >
                                             Richiedi preventivo
-                                        </button>
-
+                                        </Link>
                                     </div>
 
                                 </div>

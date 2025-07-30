@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 import Image from 'next/image'
 import BrandsGridSection from '@/components/BrandsGridSection'
 import ContattaciMappaSection from '@/components/ContattaciMappaSection'
@@ -7,6 +8,23 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 export default function ChiSiamoPage() {
+  // Gestione scroll verso anchor
+  useEffect(() => {
+    const hash = window.location.hash
+    if (hash === '#contattaci') {
+      // Piccolo delay per permettere al DOM di caricarsi completamente
+      setTimeout(() => {
+        const element = document.getElementById('contattaci')
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          })
+        }
+      }, 100)
+    }
+  }, [])
+
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Header />
@@ -80,7 +98,7 @@ export default function ChiSiamoPage() {
 
             <div className="container mx-auto px-4 sm:px-6">
               <div className="max-w-6xl mx-auto">
-                <div className="grid lg:grid-cols-1 gap-12 sm:gap-16 lg:gap-20 items-center">
+                <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-20 items-center">
                   {/* Testo */}
                   <div className="space-y-6">
                     <p
@@ -129,7 +147,7 @@ export default function ChiSiamoPage() {
                     </p>
                   </div>
 
-                  {/* Immagine laterale 
+                  {/* Immagine laterale */}
                   <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
                     <Image
                       src="/images/showroom-interior.jpg"
@@ -139,7 +157,6 @@ export default function ChiSiamoPage() {
                       sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                   </div>
-                  */}
                 </div>
               </div>
             </div>
@@ -150,7 +167,9 @@ export default function ChiSiamoPage() {
         <BrandsGridSection />
 
         {/* Contact Section */}
-        <ContattaciMappaSection />
+        <div id="contattaci">
+          <ContattaciMappaSection />
+        </div>
 
       </main>
 

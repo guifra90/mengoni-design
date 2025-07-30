@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import Image from 'next/image'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -32,7 +33,7 @@ export default function Camerette() {
                 <section className="py-12 lg:py-20 bg-white">
                     <div className="container mx-auto px-4 sm:px-6">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-                            
+
                             {/* Colonna Immagini */}
                             <div className="space-y-6">
                                 {cucineImages.map((image, index) => (
@@ -59,7 +60,7 @@ export default function Camerette() {
                             {/* Colonna Contenuto */}
                             <div className="lg:pl-8">
                                 <div className="lg:sticky lg:top-32">
-                                    
+
                                     <h1
                                         className="mb-8 font-belleza fade-in-left"
                                         style={{
@@ -86,31 +87,31 @@ export default function Camerette() {
                                         }}
                                     >
                                         <p>
-                                            Uno spazio da gioco dove crescere all’insegna del design e della funzionalità è un luogo in cui ogni elemento favorisce 
-                                            lo sviluppo armonioso dei bambini. Giochi, amici, compiti e merende convivono in perfetta armonia, creando un’atmosfera 
-                                            accogliente e stimolante. L’arredamento è studiato per soddisfare le necessità dei più piccoli e dei più grandicelli, 
-                                            garantendo un utilizzo versatile e duraturo.                                        
+                                            Uno spazio da gioco dove crescere all’insegna del design e della funzionalità è un luogo in cui ogni elemento favorisce
+                                            lo sviluppo armonioso dei bambini. Giochi, amici, compiti e merende convivono in perfetta armonia, creando un’atmosfera
+                                            accogliente e stimolante. L’arredamento è studiato per soddisfare le necessità dei più piccoli e dei più grandicelli,
+                                            garantendo un utilizzo versatile e duraturo.
                                         </p>
-                                        
+
                                         <p>
-                                            Immaginate un angolo gioioso e pieno di fantasia dove i bambini possono lasciar volare la propria immaginazione. Un’area in cui 
-                                            colori vivaci e arredi ergonomici stimolano creatività e benessere. Materiali come legno naturale, tessuti resistenti e vernici 
+                                            Immaginate un angolo gioioso e pieno di fantasia dove i bambini possono lasciar volare la propria immaginazione. Un’area in cui
+                                            colori vivaci e arredi ergonomici stimolano creatività e benessere. Materiali come legno naturale, tessuti resistenti e vernici
                                             atossiche creano un ambiente sano e sostenibile.
                                         </p>
-                                        
+
                                         <p>
-                                            Zone ben definite per attività diverse permettono ai bambini di concentrarsi e divertirsi. Un angolo dedicato ai compiti con scrivanie 
+                                            Zone ben definite per attività diverse permettono ai bambini di concentrarsi e divertirsi. Un angolo dedicato ai compiti con scrivanie
                                             regolabili in altezza e sedie ergonomiche facilita lo studio. Scaffali alla loro altezza incentivano l’autonomia e l’ordine.
                                         </p>
-                                        
+
                                         <p>
-                                            L’area giochi è il cuore pulsante dello spazio, con giochi educativi e creativi per sviluppare abilità motorie e cognitive. 
-                                            Accanto, un’area relax con cuscini morbidi e una piccola libreria offre un angolo di tranquillità. La luce naturale, grazie a 
+                                            L’area giochi è il cuore pulsante dello spazio, con giochi educativi e creativi per sviluppare abilità motorie e cognitive.
+                                            Accanto, un’area relax con cuscini morbidi e una piccola libreria offre un angolo di tranquillità. La luce naturale, grazie a
                                             grandi finestre, crea un ambiente luminoso e allegro.
                                         </p>
-                                        
+
                                         <p>
-                                            Ogni elemento è pensato per essere pratico e facile da utilizzare, con arredi modulari che si adattano alle esigenze. Un’area 
+                                            Ogni elemento è pensato per essere pratico e facile da utilizzare, con arredi modulari che si adattano alle esigenze. Un’area
                                             dedicata alle merende con tavoli e sedie a misura di bambino promuove cibi sani e gustosi.
                                         </p>
                                     </div>
@@ -121,8 +122,10 @@ export default function Camerette() {
                                             animationDelay: '400ms'
                                         }}
                                     >
-                                        <button
-                                            className="cursor-pointer w-full sm:w-auto"
+
+                                        <Link
+                                            href="/chi-siamo#contattaci"
+                                            className="inline-block cursor-pointer w-full sm:w-auto text-center"
                                             style={{
                                                 color: '#b59175',
                                                 backgroundColor: 'transparent',
@@ -150,8 +153,7 @@ export default function Camerette() {
                                             }}
                                         >
                                             Richiedi preventivo
-                                        </button>
-
+                                        </Link>
                                     </div>
 
                                 </div>
@@ -160,7 +162,7 @@ export default function Camerette() {
                         </div>
                     </div>
                 </section>
-            </main>            
+            </main>
             <Footer />
         </div>
     )
