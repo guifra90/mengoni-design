@@ -60,10 +60,10 @@ export default function ShowroomGrid() {
   ]
 
   return (
-    <section className="py-2 sm:py-16 lg:py-20 bg-white">
-      <div className="container mx-auto px-2 sm:px-2">
+    <section className="py-2 md:py-16 lg:py-20 bg-white">
+      <div className="container mx-auto px-2 md:px-6">
         {/* Header Section */}
-        <div className="flex flex-col items-center text-center mb-6 sm:mb-12">
+        <div className="flex flex-col items-center text-center mb-6 md:mb-12">
           <p
             className="mb-2 tracking-widest"
             style={{
@@ -90,7 +90,7 @@ export default function ShowroomGrid() {
         </div>
 
         {/* Grid Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-6">
           {gridItems.map((item, index) => (
             <div key={index} className="group relative">
               <Link href={item.href} className="block cursor-pointer">
