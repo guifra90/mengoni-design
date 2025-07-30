@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function Header({ isScrolled }) {
+export default function Header({ isScrolled, isHomePage = false }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const toggleMobileMenu = () => {
@@ -22,11 +22,19 @@ export default function Header({ isScrolled }) {
     { href: "/contatti", label: "Contatti" }
   ]
 
+  // Logic per determinare i colori e il logo
+  const shouldUseDarkTheme = !isHomePage || isScrolled
+  const logoSrc = shouldUseDarkTheme ? "/logo-small-black.png" : "/logo-full-white.png"
+  const logoWidth = shouldUseDarkTheme ? 120 : 280
+  const logoHeight = shouldUseDarkTheme ? 32 : 56
+
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-white/95 backdrop-blur-md shadow-lg' 
-        : 'bg-transparent'
+      isHomePage 
+        ? (isScrolled 
+            ? 'bg-white/95 backdrop-blur-md shadow-lg' 
+            : 'bg-transparent')
+        : 'bg-white/95 backdrop-blur-md shadow-lg'
     }`}>
       <nav className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between">
@@ -34,10 +42,10 @@ export default function Header({ isScrolled }) {
           <div className="flex-shrink-0">
             <Link href="/">
               <Image
-                src={isScrolled ? "/logo-small-black.png" : "/logo-full-white.png"}
+                src={logoSrc}
                 alt="Mengoni Design"
-                width={isScrolled ? 120 : 280}
-                height={isScrolled ? 32 : 56}
+                width={logoWidth}
+                height={logoHeight}
                 className="h-8 sm:h-10 lg:h-14 w-auto object-contain transition-all duration-300 cursor-pointer"
                 priority
               />
@@ -51,7 +59,7 @@ export default function Header({ isScrolled }) {
                 key={item.href}
                 href={item.href}
                 className={`transition-colors duration-300 cursor-pointer ${
-                  isScrolled 
+                  shouldUseDarkTheme
                     ? 'text-black hover:text-gray-700' 
                     : 'text-white hover:text-gray-200'
                 }`}
@@ -77,7 +85,7 @@ export default function Header({ isScrolled }) {
           >
             <svg 
               className={`w-5 h-5 sm:w-6 sm:h-6 transition-all duration-300 ${
-                isScrolled ? 'text-gray-900' : 'text-white'
+                shouldUseDarkTheme ? 'text-gray-900' : 'text-white'
               }`} 
               fill="none" 
               stroke="currentColor" 
@@ -99,14 +107,14 @@ export default function Header({ isScrolled }) {
             : 'max-h-0 opacity-0'
         }`}>
           <div className={`py-4 space-y-3 border-t ${
-            isScrolled ? 'border-gray-200' : 'border-white/20'
+            shouldUseDarkTheme ? 'border-gray-200' : 'border-white/20'
           }`}>
             {menuItems.map((item) => (
               <Link 
                 key={item.href}
                 href={item.href}
                 className={`block px-2 py-2 transition-colors duration-300 cursor-pointer ${
-                  isScrolled 
+                  shouldUseDarkTheme
                     ? 'text-black hover:text-gray-700' 
                     : 'text-white hover:text-gray-200'
                 }`}
