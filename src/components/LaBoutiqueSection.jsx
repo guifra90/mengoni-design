@@ -39,10 +39,10 @@ export default function LaBoutiqueSection() {
               className="max-w-lg"
               style={{
                 fontFamily: 'Roboto, sans-serif',
-                fontSize: 'clamp(14px, 2.5vw, 16px)',
+                fontSize: 'clamp(16px, 2.5vw, 18px)',
                 lineHeight: '1.62em',
                 fontWeight: '300',
-                color: '#595959',
+                color: 'rgb(89, 89, 89)',
                 WebkitFontSmoothing: 'antialiased'
               }}
             >

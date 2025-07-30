@@ -19,11 +19,11 @@ export default function Header({ isHomePage = false }) {
   const menuItems = [
     { href: "/", label: "Home" },
     { href: "/showroom", label: "Showroom" },
-    { href: "/progetti", label: "Progetti" },
-    { href: "/contatti", label: "Contatti" }
+    /*{ href: "/progetti", label: "Progetti" },*/
+    { href: "/chi-siamo", label: "Chi siamo" }
   ]
 
-  // ✅ Sposta gestione scroll qui
+  // Sposta gestione scroll qui
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY

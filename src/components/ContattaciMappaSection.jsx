@@ -35,11 +35,14 @@ export default function ContattaciMappaSection() {
             
             {/* Descrizione */}
             <p 
-              className="leading-relaxed max-w-lg"
+              className="max-w-lg"
               style={{
+                fontFamily: 'Roboto, sans-serif',
                 fontSize: 'clamp(16px, 2.5vw, 18px)',
-                color: '#6b7280',
-                lineHeight: '1.6'
+                lineHeight: '1.62em',
+                fontWeight: '300',
+                color: 'rgb(89, 89, 89)',
+                WebkitFontSmoothing: 'antialiased'
               }}
             >
               Ci fa sempre piacere sentire cosa ne pensate e rispondere a tutte le vostre 
@@ -56,8 +59,14 @@ export default function ContattaciMappaSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
                 <span 
-                  className="text-gray-600"
-                  style={{ fontSize: 'clamp(14px, 2vw, 16px)' }}
+                  style={{
+                    fontFamily: 'Roboto, sans-serif',
+                    fontSize: 'clamp(16px, 2.5vw, 18px)',
+                    lineHeight: '1.62em',
+                    fontWeight: '300',
+                    color: 'rgb(89, 89, 89)',
+                    WebkitFontSmoothing: 'antialiased'
+                  }}
                 >
                   055 845 6274
                 </span>
@@ -70,14 +79,26 @@ export default function ContattaciMappaSection() {
                 </svg>
                 <div className="flex flex-col space-y-1">
                   <span 
-                    className="text-gray-600"
-                    style={{ fontSize: 'clamp(14px, 2vw, 16px)' }}
+                    style={{
+                      fontFamily: 'Roboto, sans-serif',
+                      fontSize: 'clamp(16px, 2.5vw, 18px)',
+                      lineHeight: '1.62em',
+                      fontWeight: '300',
+                      color: 'rgb(89, 89, 89)',
+                      WebkitFontSmoothing: 'antialiased'
+                    }}
                   >
                     +39 340 5043479
                   </span>
                   <span 
-                    className="text-gray-600"
-                    style={{ fontSize: 'clamp(14px, 2vw, 16px)' }}
+                    style={{
+                      fontFamily: 'Roboto, sans-serif',
+                      fontSize: 'clamp(16px, 2.5vw, 18px)',
+                      lineHeight: '1.62em',
+                      fontWeight: '300',
+                      color: 'rgb(89, 89, 89)',
+                      WebkitFontSmoothing: 'antialiased'
+                    }}
                   >
                     +39 349 604 4948
                   </span>
@@ -90,8 +111,15 @@ export default function ContattaciMappaSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 <span 
-                  className="text-gray-600 break-all sm:break-normal"
-                  style={{ fontSize: 'clamp(14px, 2vw, 16px)' }}
+                  className="break-all sm:break-normal"
+                  style={{
+                    fontFamily: 'Roboto, sans-serif',
+                    fontSize: 'clamp(16px, 2.5vw, 18px)',
+                    lineHeight: '1.62em',
+                    fontWeight: '300',
+                    color: 'rgb(89, 89, 89)',
+                    WebkitFontSmoothing: 'antialiased'
+                  }}
                 >
                   info@mengonidesign.it
                 </span>
