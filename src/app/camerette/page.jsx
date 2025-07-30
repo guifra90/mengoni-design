@@ -4,28 +4,24 @@ import Image from 'next/image'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
-export default function Cucine() {
+export default function Camerette() {
 
     const cucineImages = [
         {
-            src: '/cucine/cucina-1.jpg',
-            alt: 'Cucina moderna con isola centrale'
+            src: '/camerette/camerette-1.jpg',
+            alt: 'Foto cameretta'
         },
         {
-            src: '/cucine/cucina-2.jpg',
-            alt: 'Cucina minimalista bianca'
+            src: '/camerette/camerette-2.jpg',
+            alt: 'Foto cameretta'
         },
         {
-            src: '/cucine/cucina-3.jpg',
-            alt: 'Cucina in legno naturale'
+            src: '/camerette/camerette-3.jpg',
+            alt: 'Foto cameretta'
         },
         {
-            src: '/cucine/cucina-4.jpg',
-            alt: 'Cucina con penisola design'
-        },
-        {
-            src: '/cucine/cucina-5.jpg',
-            alt: 'Cucina open space contemporanea'
+            src: '/camerette/camerette-4.jpg',
+            alt: 'Foto cameretta'
         }
     ]
 
@@ -36,7 +32,7 @@ export default function Cucine() {
                 <section className="py-12 lg:py-20 bg-white">
                     <div className="container mx-auto px-4 sm:px-6">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-
+                            
                             {/* Colonna Immagini */}
                             <div className="space-y-6">
                                 {cucineImages.map((image, index) => (
@@ -63,7 +59,7 @@ export default function Cucine() {
                             {/* Colonna Contenuto */}
                             <div className="lg:pl-8">
                                 <div className="lg:sticky lg:top-32">
-
+                                    
                                     <h1
                                         className="mb-8 font-belleza fade-in-left"
                                         style={{
@@ -75,7 +71,7 @@ export default function Cucine() {
                                             lineHeight: '1em'
                                         }}
                                     >
-                                        Cucine
+                                        Camerette
                                     </h1>
 
                                     <div
@@ -90,37 +86,32 @@ export default function Cucine() {
                                         }}
                                     >
                                         <p>
-                                            Stile, organizzazione e funzionalità: che sia moderna o classica,
-                                            la cucina deve essere pratica e razionale. La scelta dello stile,
-                                            sia esso classico o moderno, è solo il primo passo. Una cucina funzionale
-                                            è fondamentale per rendere piacevole la quotidianità della famiglia.
-                                            Da Mengoni Design, offriamo soluzioni per organizzare gli spazi e gli
-                                            accessori in modo ottimale, garantendo che ogni angolo sia utilizzato al meglio.
+                                            Uno spazio da gioco dove crescere all’insegna del design e della funzionalità è un luogo in cui ogni elemento favorisce 
+                                            lo sviluppo armonioso dei bambini. Giochi, amici, compiti e merende convivono in perfetta armonia, creando un’atmosfera 
+                                            accogliente e stimolante. L’arredamento è studiato per soddisfare le necessità dei più piccoli e dei più grandicelli, 
+                                            garantendo un utilizzo versatile e duraturo.                                        
                                         </p>
-
+                                        
                                         <p>
-                                            Immaginate una cucina dove ogni utensile ha il suo posto, dove i piani di lavoro
-                                            sono sempre liberi e dove muoversi è semplice e intuitivo. La nostra esperienza ci
-                                            permette di creare ambienti in cui la praticità si sposa con l’estetica, soddisfacendo
-                                            le esigenze di chi ama cucinare e di chi vede la cucina come il cuore pulsante della casa.
+                                            Immaginate un angolo gioioso e pieno di fantasia dove i bambini possono lasciar volare la propria immaginazione. Un’area in cui 
+                                            colori vivaci e arredi ergonomici stimolano creatività e benessere. Materiali come legno naturale, tessuti resistenti e vernici 
+                                            atossiche creano un ambiente sano e sostenibile.
                                         </p>
-
+                                        
                                         <p>
-                                            Da Mengoni Design, non solo troverete cucine eleganti e ben organizzate, ma anche una selezione
-                                            di elettrodomestici delle migliori marche. Questi prodotti garantiscono efficienza, durabilità e
-                                            tecnologia all’avanguardia, facilitando ogni operazione in cucina, dalla preparazione dei pasti alla pulizia.
+                                            Zone ben definite per attività diverse permettono ai bambini di concentrarsi e divertirsi. Un angolo dedicato ai compiti con scrivanie 
+                                            regolabili in altezza e sedie ergonomiche facilita lo studio. Scaffali alla loro altezza incentivano l’autonomia e l’ordine.
                                         </p>
-
+                                        
                                         <p>
-                                            Che preferiate uno stile classico, con dettagli raffinati e materiali tradizionali, o uno moderno, con
-                                            linee pulite e innovazioni tecnologiche, siamo qui per guidarvi nella scelta e nella configurazione ideale.
-                                            Ogni cucina che progettiamo è unica, pensata per adattarsi alle esigenze specifiche di ogni famiglia.
+                                            L’area giochi è il cuore pulsante dello spazio, con giochi educativi e creativi per sviluppare abilità motorie e cognitive. 
+                                            Accanto, un’area relax con cuscini morbidi e una piccola libreria offre un angolo di tranquillità. La luce naturale, grazie a 
+                                            grandi finestre, crea un ambiente luminoso e allegro.
                                         </p>
-
+                                        
                                         <p>
-                                            In conclusione, la cucina perfetta è quella che unisce stile, organizzazione e funzionalità, rendendo ogni
-                                            momento trascorso al suo interno piacevole e produttivo. Da Mengoni Design, ci impegniamo a realizzare questo
-                                            equilibrio per ogni cliente.
+                                            Ogni elemento è pensato per essere pratico e facile da utilizzare, con arredi modulari che si adattano alle esigenze. Un’area 
+                                            dedicata alle merende con tavoli e sedie a misura di bambino promuove cibi sani e gustosi.
                                         </p>
                                     </div>
 
@@ -130,7 +121,6 @@ export default function Cucine() {
                                             animationDelay: '400ms'
                                         }}
                                     >
-
                                         <button
                                             className="cursor-pointer w-full sm:w-auto"
                                             style={{
@@ -170,7 +160,7 @@ export default function Cucine() {
                         </div>
                     </div>
                 </section>
-            </main>
+            </main>            
             <Footer />
         </div>
     )

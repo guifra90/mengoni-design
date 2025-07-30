@@ -4,28 +4,24 @@ import Image from 'next/image'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
-export default function Cucine() {
+export default function Living() {
 
     const cucineImages = [
         {
-            src: '/cucine/cucina-1.jpg',
-            alt: 'Cucina moderna con isola centrale'
+            src: '/living/living-1.jpg',
+            alt: 'Foto living'
         },
         {
-            src: '/cucine/cucina-2.jpg',
-            alt: 'Cucina minimalista bianca'
+            src: '/living/living-2.jpg',
+            alt: 'Foto living'
         },
         {
-            src: '/cucine/cucina-3.jpg',
-            alt: 'Cucina in legno naturale'
+            src: '/living/living-3.jpg',
+            alt: 'Foto living'
         },
         {
-            src: '/cucine/cucina-4.jpg',
-            alt: 'Cucina con penisola design'
-        },
-        {
-            src: '/cucine/cucina-5.jpg',
-            alt: 'Cucina open space contemporanea'
+            src: '/living/living-4.jpg',
+            alt: 'Foto living'
         }
     ]
 
@@ -36,7 +32,7 @@ export default function Cucine() {
                 <section className="py-12 lg:py-20 bg-white">
                     <div className="container mx-auto px-4 sm:px-6">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-
+                            
                             {/* Colonna Immagini */}
                             <div className="space-y-6">
                                 {cucineImages.map((image, index) => (
@@ -63,7 +59,7 @@ export default function Cucine() {
                             {/* Colonna Contenuto */}
                             <div className="lg:pl-8">
                                 <div className="lg:sticky lg:top-32">
-
+                                    
                                     <h1
                                         className="mb-8 font-belleza fade-in-left"
                                         style={{
@@ -75,7 +71,7 @@ export default function Cucine() {
                                             lineHeight: '1em'
                                         }}
                                     >
-                                        Cucine
+                                        Living
                                     </h1>
 
                                     <div
@@ -90,37 +86,37 @@ export default function Cucine() {
                                         }}
                                     >
                                         <p>
-                                            Stile, organizzazione e funzionalità: che sia moderna o classica,
-                                            la cucina deve essere pratica e razionale. La scelta dello stile,
-                                            sia esso classico o moderno, è solo il primo passo. Una cucina funzionale
-                                            è fondamentale per rendere piacevole la quotidianità della famiglia.
-                                            Da Mengoni Design, offriamo soluzioni per organizzare gli spazi e gli
-                                            accessori in modo ottimale, garantendo che ogni angolo sia utilizzato al meglio.
+                                            Stile, comfort e versatilità: che sia moderno o classico, il soggiorno è il luogo dove 
+                                            stile e funzionalità devono coesistere armoniosamente. La scelta dello stile, sia esso 
+                                            tradizionale o contemporaneo, rappresenta solo il punto di partenza. Un living ben organizzato 
+                                            è essenziale per creare uno spazio accogliente e confortevole, in grado di rispondere alle esigenze 
+                                            della vita quotidiana.
                                         </p>
-
+                                        
                                         <p>
-                                            Immaginate una cucina dove ogni utensile ha il suo posto, dove i piani di lavoro
-                                            sono sempre liberi e dove muoversi è semplice e intuitivo. La nostra esperienza ci
-                                            permette di creare ambienti in cui la praticità si sposa con l’estetica, soddisfacendo
-                                            le esigenze di chi ama cucinare e di chi vede la cucina come il cuore pulsante della casa.
+                                            Immaginate un soggiorno dove ogni elemento trova il suo giusto equilibrio, dove gli arredi invitano 
+                                            al relax e dove la disposizione degli spazi facilita la convivialità. Da Mengoni Design, offriamo soluzioni 
+                                            personalizzate per ottimizzare gli ambienti, assicurandoci che ogni angolo venga sfruttato al meglio, per un 
+                                            living che sia tanto funzionale quanto elegante.
                                         </p>
-
+                                        
                                         <p>
-                                            Da Mengoni Design, non solo troverete cucine eleganti e ben organizzate, ma anche una selezione
-                                            di elettrodomestici delle migliori marche. Questi prodotti garantiscono efficienza, durabilità e
-                                            tecnologia all’avanguardia, facilitando ogni operazione in cucina, dalla preparazione dei pasti alla pulizia.
+                                            Le nostre proposte spaziano da divani comodi e versatili a mobili per l’intrattenimento tecnologicamente avanzati, 
+                                            passando per complementi d’arredo che esprimono il vostro gusto personale. Grazie alla nostra esperienza, siamo in 
+                                            grado di creare ambienti living che combinano estetica e praticità, ideali sia per il relax quotidiano che per accogliere 
+                                            ospiti in un contesto raffinato.
                                         </p>
-
+                                        
                                         <p>
-                                            Che preferiate uno stile classico, con dettagli raffinati e materiali tradizionali, o uno moderno, con
-                                            linee pulite e innovazioni tecnologiche, siamo qui per guidarvi nella scelta e nella configurazione ideale.
-                                            Ogni cucina che progettiamo è unica, pensata per adattarsi alle esigenze specifiche di ogni famiglia.
+                                            Che il vostro stile prediliga il fascino del classico, con materiali pregiati e linee senza tempo, o l’essenzialità del 
+                                            moderno, con arredi dalle forme minimali e soluzioni innovative, siamo qui per guidarvi nella scelta perfetta. Ogni progetto 
+                                            è unico e pensato per adattarsi alle specifiche esigenze di chi vive lo spazio.
                                         </p>
-
+                                        
                                         <p>
-                                            In conclusione, la cucina perfetta è quella che unisce stile, organizzazione e funzionalità, rendendo ogni
-                                            momento trascorso al suo interno piacevole e produttivo. Da Mengoni Design, ci impegniamo a realizzare questo
-                                            equilibrio per ogni cliente.
+                                            In definitiva, il soggiorno ideale è quello che coniuga stile, comfort e versatilità, trasformando ogni momento 
+                                            vissuto in casa in un’esperienza piacevole e rilassante. Da Mengoni Design, ci impegniamo a realizzare per voi un living 
+                                            che rispecchi queste qualità, garantendo benessere e bellezza per ogni cliente.
                                         </p>
                                     </div>
 
@@ -130,7 +126,6 @@ export default function Cucine() {
                                             animationDelay: '400ms'
                                         }}
                                     >
-
                                         <button
                                             className="cursor-pointer w-full sm:w-auto"
                                             style={{
@@ -170,7 +165,7 @@ export default function Cucine() {
                         </div>
                     </div>
                 </section>
-            </main>
+            </main>            
             <Footer />
         </div>
     )

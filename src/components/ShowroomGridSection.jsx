@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 
 export default function ShowroomGrid() {
   const gridItems = [
@@ -77,24 +76,9 @@ export default function ShowroomGrid() {
         {/* Grid Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {gridItems.map((item, index) => (
-            <motion.div
-              key={index}
-              className="group relative"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.1,
-                ease: "easeOut"
-              }}
-            >
+            <div key={index} className="group relative">
               <Link href={item.href} className="block cursor-pointer">
-                <motion.div
-                  whileHover={{ scale: 1.01 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="relative overflow-hidden w-full aspect-[460/800]"
-                >
+                <div className="relative overflow-hidden w-full aspect-[460/800]">
                   <Image
                     src={item.image}
                     alt={item.title}
@@ -125,9 +109,9 @@ export default function ShowroomGrid() {
                       </h3>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

@@ -1,10 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function Header({ isScrolled, isHomePage = false }) {
+export default function Header({ isHomePage = false }) {
+  const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const toggleMobileMenu = () => {
@@ -22,7 +23,17 @@ export default function Header({ isScrolled, isHomePage = false }) {
     { href: "/contatti", label: "Contatti" }
   ]
 
-  // Logic per determinare i colori e il logo
+  // ✅ Sposta gestione scroll qui
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY
+      setIsScrolled(scrollPosition > 50)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   const shouldUseDarkTheme = !isHomePage || isScrolled
   const logoSrc = shouldUseDarkTheme ? "/logo-small-black.png" : "/logo-full-white.png"
   const logoWidth = shouldUseDarkTheme ? 120 : 280
@@ -30,10 +41,10 @@ export default function Header({ isScrolled, isHomePage = false }) {
 
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isHomePage 
-        ? (isScrolled 
-            ? 'bg-white/95 backdrop-blur-md shadow-lg' 
-            : 'bg-transparent')
+      isHomePage
+        ? (isScrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-lg'
+          : 'bg-transparent')
         : 'bg-white/95 backdrop-blur-md shadow-lg'
     }`}>
       <nav className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
@@ -55,14 +66,13 @@ export default function Header({ isScrolled, isHomePage = false }) {
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-6 lg:space-x-8">
             {menuItems.map((item) => (
-              <Link 
+              <Link
                 key={item.href}
                 href={item.href}
-                className={`transition-colors duration-300 cursor-pointer ${
-                  shouldUseDarkTheme
-                    ? 'text-black hover:text-gray-700' 
+                className={`transition-colors duration-300 cursor-pointer ${shouldUseDarkTheme
+                    ? 'text-black hover:text-gray-700'
                     : 'text-white hover:text-gray-200'
-                }`}
+                  }`}
                 style={{
                   fontFamily: 'Roboto, sans-serif',
                   fontSize: '13px',
@@ -78,17 +88,16 @@ export default function Header({ isScrolled, isHomePage = false }) {
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
+          <button
             className="md:hidden cursor-pointer p-2 -mr-2"
             onClick={toggleMobileMenu}
             aria-label="Toggle mobile menu"
           >
-            <svg 
-              className={`w-5 h-5 sm:w-6 sm:h-6 transition-all duration-300 ${
-                shouldUseDarkTheme ? 'text-gray-900' : 'text-white'
-              }`} 
-              fill="none" 
-              stroke="currentColor" 
+            <svg
+              className={`w-5 h-5 sm:w-6 sm:h-6 transition-all duration-300 ${shouldUseDarkTheme ? 'text-gray-900' : 'text-white'
+                }`}
+              fill="none"
+              stroke="currentColor"
               viewBox="0 0 24 24"
             >
               {isMobileMenuOpen ? (
@@ -102,22 +111,17 @@ export default function Header({ isScrolled, isHomePage = false }) {
 
         {/* Mobile Menu */}
         <div className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-          isMobileMenuOpen 
-            ? 'max-h-64 opacity-100 mt-4' 
-            : 'max-h-0 opacity-0'
+          isMobileMenuOpen ? 'max-h-64 opacity-100 mt-4' : 'max-h-0 opacity-0'
         }`}>
-          <div className={`py-4 space-y-3 border-t ${
-            shouldUseDarkTheme ? 'border-gray-200' : 'border-white/20'
-          }`}>
+          <div className={`py-4 space-y-3 border-t ${shouldUseDarkTheme ? 'border-gray-200' : 'border-white/20'}`}>
             {menuItems.map((item) => (
-              <Link 
+              <Link
                 key={item.href}
                 href={item.href}
-                className={`block px-2 py-2 transition-colors duration-300 cursor-pointer ${
-                  shouldUseDarkTheme
-                    ? 'text-black hover:text-gray-700' 
+                className={`block px-2 py-2 transition-colors duration-300 cursor-pointer ${shouldUseDarkTheme
+                    ? 'text-black hover:text-gray-700'
                     : 'text-white hover:text-gray-200'
-                }`}
+                  }`}
                 style={{
                   fontFamily: 'Roboto, sans-serif',
                   fontSize: '13px',

@@ -4,28 +4,20 @@ import Image from 'next/image'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
-export default function Cucine() {
+export default function Illuminazione() {
 
     const cucineImages = [
         {
-            src: '/cucine/cucina-1.jpg',
-            alt: 'Cucina moderna con isola centrale'
+            src: '/illuminazione/illuminazione-1.jpg',
+            alt: 'Foto illuminazione'
         },
         {
-            src: '/cucine/cucina-2.jpg',
-            alt: 'Cucina minimalista bianca'
+            src: '/illuminazione/illuminazione-2.jpg',
+            alt: 'Foto illuminazione'
         },
         {
-            src: '/cucine/cucina-3.jpg',
-            alt: 'Cucina in legno naturale'
-        },
-        {
-            src: '/cucine/cucina-4.jpg',
-            alt: 'Cucina con penisola design'
-        },
-        {
-            src: '/cucine/cucina-5.jpg',
-            alt: 'Cucina open space contemporanea'
+            src: '/illuminazione/illuminazione-3.jpg',
+            alt: 'Foto illuminazione'
         }
     ]
 
@@ -36,7 +28,7 @@ export default function Cucine() {
                 <section className="py-12 lg:py-20 bg-white">
                     <div className="container mx-auto px-4 sm:px-6">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-
+                            
                             {/* Colonna Immagini */}
                             <div className="space-y-6">
                                 {cucineImages.map((image, index) => (
@@ -63,7 +55,7 @@ export default function Cucine() {
                             {/* Colonna Contenuto */}
                             <div className="lg:pl-8">
                                 <div className="lg:sticky lg:top-32">
-
+                                    
                                     <h1
                                         className="mb-8 font-belleza fade-in-left"
                                         style={{
@@ -75,7 +67,7 @@ export default function Cucine() {
                                             lineHeight: '1em'
                                         }}
                                     >
-                                        Cucine
+                                        Illuminazione
                                     </h1>
 
                                     <div
@@ -90,38 +82,30 @@ export default function Cucine() {
                                         }}
                                     >
                                         <p>
-                                            Stile, organizzazione e funzionalità: che sia moderna o classica,
-                                            la cucina deve essere pratica e razionale. La scelta dello stile,
-                                            sia esso classico o moderno, è solo il primo passo. Una cucina funzionale
-                                            è fondamentale per rendere piacevole la quotidianità della famiglia.
-                                            Da Mengoni Design, offriamo soluzioni per organizzare gli spazi e gli
-                                            accessori in modo ottimale, garantendo che ogni angolo sia utilizzato al meglio.
+                                            Lasciatevi guidare dai toni caldi e freddi che accompagneranno le vostre giornate. I complementi di arredo giocano 
+                                            un ruolo fondamentale nel trasformare uno spazio, e l’illuminazione è senza dubbio la regina dell’interior design. 
+                                            La luce, con le sue intensità e colori, è in grado di alterare la percezione degli spazi, rendendoli più accoglienti e funzionali.                                        
                                         </p>
-
+                                        
                                         <p>
-                                            Immaginate una cucina dove ogni utensile ha il suo posto, dove i piani di lavoro
-                                            sono sempre liberi e dove muoversi è semplice e intuitivo. La nostra esperienza ci
-                                            permette di creare ambienti in cui la praticità si sposa con l’estetica, soddisfacendo
-                                            le esigenze di chi ama cucinare e di chi vede la cucina come il cuore pulsante della casa.
+                                            Una corretta illuminazione sarà la vostra più cara alleata sia negli ambienti di lavoro che in quelli di relax. In una zona giorno, 
+                                            ad esempio, una combinazione di luci calde e fredde può creare un’atmosfera versatile, perfetta per ogni occasione. 
+                                            Le lampade da tavolo e le piantane aggiungono punti luce mirati, mentre i faretti e le luci a soffitto garantiscono 
+                                            un’illuminazione diffusa e uniforme.                                        
                                         </p>
-
+                                        
                                         <p>
-                                            Da Mengoni Design, non solo troverete cucine eleganti e ben organizzate, ma anche una selezione
-                                            di elettrodomestici delle migliori marche. Questi prodotti garantiscono efficienza, durabilità e
-                                            tecnologia all’avanguardia, facilitando ogni operazione in cucina, dalla preparazione dei pasti alla pulizia.
+                                            Da Mengoni Interni, offriamo una vasta gamma di soluzioni per l’illuminazione, pensate per soddisfare ogni esigenza. 
+                                            I nostri esperti vi guideranno nella scelta delle lampade giuste per ogni ambiente, tenendo conto delle vostre preferenze estetiche 
+                                            e delle necessità pratiche. Ogni dettaglio è studiato per armonizzarsi con il resto dell’arredo, creando un equilibrio perfetto tra 
+                                            stile e funzionalità.
                                         </p>
-
+                                        
                                         <p>
-                                            Che preferiate uno stile classico, con dettagli raffinati e materiali tradizionali, o uno moderno, con
-                                            linee pulite e innovazioni tecnologiche, siamo qui per guidarvi nella scelta e nella configurazione ideale.
-                                            Ogni cucina che progettiamo è unica, pensata per adattarsi alle esigenze specifiche di ogni famiglia.
-                                        </p>
-
-                                        <p>
-                                            In conclusione, la cucina perfetta è quella che unisce stile, organizzazione e funzionalità, rendendo ogni
-                                            momento trascorso al suo interno piacevole e produttivo. Da Mengoni Design, ci impegniamo a realizzare questo
-                                            equilibrio per ogni cliente.
-                                        </p>
+                                            Oltre all’illuminazione, anche i complementi di arredo come cuscini, tappeti e oggetti decorativi possono influenzare l’atmosfera di una stanza. 
+                                            I toni caldi, come il rosso e l’arancione, aggiungono energia e vitalità, mentre i toni freddi, come il blu e il verde, infondono calma e serenità. 
+                                            La scelta dei colori giusti può trasformare completamente la percezione di uno spazio, rendendolo più accogliente e personale.
+                                        </p>                                        
                                     </div>
 
                                     <div
@@ -130,7 +114,6 @@ export default function Cucine() {
                                             animationDelay: '400ms'
                                         }}
                                     >
-
                                         <button
                                             className="cursor-pointer w-full sm:w-auto"
                                             style={{
@@ -170,7 +153,7 @@ export default function Cucine() {
                         </div>
                     </div>
                 </section>
-            </main>
+            </main>            
             <Footer />
         </div>
     )

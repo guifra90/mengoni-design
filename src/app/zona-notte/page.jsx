@@ -4,29 +4,30 @@ import Image from 'next/image'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
-export default function Cucine() {
+export default function ZonaNotte() {
 
     const cucineImages = [
         {
-            src: '/cucine/cucina-1.jpg',
-            alt: 'Cucina moderna con isola centrale'
+            src: '/zona-notte/zona-notte-1.jpg',
+            alt: 'Foto zona notte'
         },
         {
-            src: '/cucine/cucina-2.jpg',
-            alt: 'Cucina minimalista bianca'
+            src: '/zona-notte/zona-notte-2.jpg',
+            alt: 'Foto zona notte'
         },
         {
-            src: '/cucine/cucina-3.jpg',
-            alt: 'Cucina in legno naturale'
+            src: '/zona-notte/zona-notte-3.jpg',
+            alt: 'Foto zona notte'
         },
         {
-            src: '/cucine/cucina-4.jpg',
-            alt: 'Cucina con penisola design'
+            src: '/zona-notte/zona-notte-4.jpg',
+            alt: 'Foto zona notte'
         },
         {
-            src: '/cucine/cucina-5.jpg',
-            alt: 'Cucina open space contemporanea'
+            src: '/zona-notte/zona-notte-5.jpg',
+            alt: 'Foto zona notte'
         }
+
     ]
 
     return (
@@ -36,7 +37,7 @@ export default function Cucine() {
                 <section className="py-12 lg:py-20 bg-white">
                     <div className="container mx-auto px-4 sm:px-6">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-
+                            
                             {/* Colonna Immagini */}
                             <div className="space-y-6">
                                 {cucineImages.map((image, index) => (
@@ -63,7 +64,7 @@ export default function Cucine() {
                             {/* Colonna Contenuto */}
                             <div className="lg:pl-8">
                                 <div className="lg:sticky lg:top-32">
-
+                                    
                                     <h1
                                         className="mb-8 font-belleza fade-in-left"
                                         style={{
@@ -75,7 +76,7 @@ export default function Cucine() {
                                             lineHeight: '1em'
                                         }}
                                     >
-                                        Cucine
+                                        Zona Notte
                                     </h1>
 
                                     <div
@@ -90,37 +91,35 @@ export default function Cucine() {
                                         }}
                                     >
                                         <p>
-                                            Stile, organizzazione e funzionalità: che sia moderna o classica,
-                                            la cucina deve essere pratica e razionale. La scelta dello stile,
-                                            sia esso classico o moderno, è solo il primo passo. Una cucina funzionale
-                                            è fondamentale per rendere piacevole la quotidianità della famiglia.
-                                            Da Mengoni Design, offriamo soluzioni per organizzare gli spazi e gli
-                                            accessori in modo ottimale, garantendo che ogni angolo sia utilizzato al meglio.
+                                            Eleganza, comfort e intimità: la camera da letto, che sia moderna o classica, deve rappresentare il 
+                                            perfetto equilibrio tra estetica e funzionalità. La scelta dello stile è solo il primo passo, ma è 
+                                            l’attenzione ai dettagli e all’organizzazione degli spazi che rende una camera davvero accogliente e funzionale.                                        
                                         </p>
-
+                                        
                                         <p>
-                                            Immaginate una cucina dove ogni utensile ha il suo posto, dove i piani di lavoro
-                                            sono sempre liberi e dove muoversi è semplice e intuitivo. La nostra esperienza ci
-                                            permette di creare ambienti in cui la praticità si sposa con l’estetica, soddisfacendo
-                                            le esigenze di chi ama cucinare e di chi vede la cucina come il cuore pulsante della casa.
+                                            Immaginate una zona notte dove ogni elemento contribuisce a creare un’atmosfera di relax e serenità, dove l’armonia 
+                                            tra mobili, tessuti e illuminazione favorisce il riposo. Da Mengoni Design, progettiamo soluzioni per ottimizzare gli spazi, 
+                                            che includono letti confortevoli, armadi capienti e accessori studiati per garantire ordine e tranquillità. Ogni ambiente è 
+                                            pensato per riflettere il vostro stile personale, senza compromettere il comfort.
                                         </p>
-
+                                        
                                         <p>
-                                            Da Mengoni Design, non solo troverete cucine eleganti e ben organizzate, ma anche una selezione
-                                            di elettrodomestici delle migliori marche. Questi prodotti garantiscono efficienza, durabilità e
-                                            tecnologia all’avanguardia, facilitando ogni operazione in cucina, dalla preparazione dei pasti alla pulizia.
+                                            Le nostre proposte per la zona notte comprendono letti dalle linee eleganti, materassi di alta qualità per un riposo rigenerante 
+                                            e armadi su misura che ottimizzano lo spazio, mantenendo la vostra camera sempre in ordine. Grazie alla nostra esperienza, possiamo 
+                                            creare ambienti in cui il design si sposa con la funzionalità, soddisfacendo le esigenze di chi desidera una camera da letto che sia 
+                                            un vero e proprio rifugio.
                                         </p>
-
+                                        
                                         <p>
-                                            Che preferiate uno stile classico, con dettagli raffinati e materiali tradizionali, o uno moderno, con
-                                            linee pulite e innovazioni tecnologiche, siamo qui per guidarvi nella scelta e nella configurazione ideale.
-                                            Ogni cucina che progettiamo è unica, pensata per adattarsi alle esigenze specifiche di ogni famiglia.
+                                            Che preferiate uno stile classico, con tessuti raffinati e mobili dalle finiture pregiate, o uno moderno, caratterizzato da linee pulite 
+                                            e materiali innovativi, vi accompagneremo nella scelta degli elementi giusti per la vostra zona notte. Ogni camera da letto che progettiamo 
+                                            è unica, pensata per adattarsi alle vostre necessità, garantendo un riposo rigenerante e un’estetica in armonia con il resto della casa.
                                         </p>
-
+                                        
                                         <p>
-                                            In conclusione, la cucina perfetta è quella che unisce stile, organizzazione e funzionalità, rendendo ogni
-                                            momento trascorso al suo interno piacevole e produttivo. Da Mengoni Design, ci impegniamo a realizzare questo
-                                            equilibrio per ogni cliente.
+                                            In sintesi, la camera da letto perfetta unisce eleganza, comfort e intimità, rendendo ogni notte un momento di vero relax. Da Mengoni Design, 
+                                            ci impegniamo a creare questo equilibrio per i nostri clienti, realizzando una zona notte che sia accogliente, funzionale e sempre in sintonia 
+                                            con il vostro stile di vita.
                                         </p>
                                     </div>
 
@@ -130,7 +129,6 @@ export default function Cucine() {
                                             animationDelay: '400ms'
                                         }}
                                     >
-
                                         <button
                                             className="cursor-pointer w-full sm:w-auto"
                                             style={{
@@ -170,7 +168,7 @@ export default function Cucine() {
                         </div>
                     </div>
                 </section>
-            </main>
+            </main>            
             <Footer />
         </div>
     )
