@@ -7,15 +7,39 @@ export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
 
   const heroSlides = [
-    {
-      image: '/slider-home/slide1.jpg',
+    /*{
+      image: '/slider-home/slide-1.jpg',
       title: 'DESIGN CONTEMPORANEO',
       subtitle: 'Eleganza moderna',
       description: 'Scopri le nostre cucine dal design raffinato, dove funzionalità e bellezza si fondono perfettamente.'
+    },*/
+    {
+      image: '/slider-home/slide-2.webp',
+      title: 'HOME IS MY JOY',
+      subtitle: 'Una nuova vita',
+      description: 'Linee essenziali e materiali pregiati per creare ambienti di straordinaria eleganza.'
     },
     {
-      image: '/slider-home/slide2.webp',
-      title: 'BLACK VELVET TOUCH',
+      image: '/slider-home/slide-3.jpg',
+      title: 'NATURAL SHARING',
+      subtitle: 'Una nuova vita',
+      description: 'Linee essenziali e materiali pregiati per creare ambienti di straordinaria eleganza.'
+    },
+    {
+      image: '/slider-home/slide-4.jpg',
+      title: 'LOCAL GENTILITY',
+      subtitle: 'Una nuova vita',
+      description: 'Linee essenziali e materiali pregiati per creare ambienti di straordinaria eleganza.'
+    },
+    {
+      image: '/slider-home/slide-5.webp',
+      title: 'WELCOME LIGHTNESS',
+      subtitle: 'Una nuova vita',
+      description: 'Linee essenziali e materiali pregiati per creare ambienti di straordinaria eleganza.'
+    },
+    {
+      image: '/slider-home/slide-6.jpg',
+      title: 'METROPOLITAN ENERGY',
       subtitle: 'Una nuova vita',
       description: 'Linee essenziali e materiali pregiati per creare ambienti di straordinaria eleganza.'
     }
@@ -69,8 +93,13 @@ export default function HeroSection() {
                   textTransform: 'uppercase',
                   color: 'rgb(255, 255, 255)',
                   fontWeight: '400',
-                  fontSize: 'clamp(28px, 8vw, 100px)',
-                  lineHeight: '1.1'
+                  fontSize: 'clamp(24px, 6vw, 100px)',
+                  lineHeight: 'clamp(1.1, 1.1, 1.2)',
+                  letterSpacing: 'clamp(0.02em, 0.05em, 0.1em)',
+                  wordBreak: 'break-word',
+                  hyphens: 'auto',
+                  maxWidth: '90vw',
+                  margin: '0 auto'
                 }}
               >
                 {slide.title}
@@ -118,8 +147,6 @@ export default function HeroSection() {
           <polygon points="38,5.37 1.5,5.37 8.21,0.54 7.87,0 0,5.68 7.61,12 7.98,11.49 1.4,6.02 38,6.02" />
         </svg>
       </button>
-
-
     </section>
   )
 }
